@@ -88,6 +88,7 @@ class App extends PureComponent {
     }
 
     const step = .2;
+    const duration = .8;
 
     const activePageIndex = this.pages.indexOf(activePage);
     const lastPageIndex = this.pages.length - 1;
@@ -96,31 +97,31 @@ class App extends PureComponent {
 
     const transformDelay = (maxDistanceFromActive - distanceFromActive) * step;
     const flippedTransformDelay = (distanceFromActive-1) * step;
-    const heightDelay = (maxDistanceFromActive-1) * step + .8;
+    const heightDelay = (maxDistanceFromActive-1) * step + duration;
 
     if (!deactivating && !switching) {
       if (el === 'main-links-container') return {transitionDelay: `${heightDelay}s`};
-      if (el === 'page' || el === 'nav') return {transitionDelay: `${heightDelay+.8}s`};
+      if (el === 'page' || el === 'nav') return {transitionDelay: `${heightDelay+duration}s`};
       return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s`};
     }
     else if (switching) {
       if (el === 'main-links-container' || el === 'nav') return {};
       if (el === 'page') {
-        if (page === activePage) return {transitionDelay: `.8s, .8s, .8s`};
-        else return {transitionDelay: `0s, .8s, .8s`}
+        if (page === activePage) return {transitionDelay: `${duration}s, ${duration}s, ${duration}s`};
+        else return {transitionDelay: `0s, ${duration}s, ${duration}s`}
       }
       if (el === activePage) {
-        return {transitionDelay: `.8s, .8s, .8s`};
+        return {transitionDelay: `${duration}s, ${duration}s, ${duration}s`};
       }
       else {
-        return {transitionDelay: `0s, .8s, .8s`};
+        return {transitionDelay: `0s, ${duration}s, ${duration}s`};
       }
     }
     else {
-      if (el === 'main-links-container') return {transitionDelay: `.8s`};
-      if (el === 'page') return {transitionDelay: `0s, .8s, .8s`};
-      if (el === 'nav') return {transitionDelay: `0s, .8s`};
-      return {transitionDelay: `${flippedTransformDelay+1.6}s, .8s, .8s`};
+      if (el === 'main-links-container') return {transitionDelay: `${duration}s`};
+      if (el === 'page') return {transitionDelay: `0s, ${duration}s, ${duration}s`};
+      if (el === 'nav') return {transitionDelay: `0s, ${duration}s`};
+      return {transitionDelay: `${flippedTransformDelay+1.6}s, ${duration}s, ${duration}s`};
     }
   }
 
