@@ -123,6 +123,7 @@ body {
 @media (max-width: 400px) {
   .nav-links {
     font-size: 75%;
+    line-height: 40px;
   }
 }
 .nav-links.hidden {
@@ -138,6 +139,11 @@ body {
   background: white;
   border-left: 1px solid #E5E5E5;
   border-top: 15px solid;
+}
+@media (max-width: 400px) {
+  .nav-links .nav-link {
+    border-top-width: 10px;
+  }
 }
 .nav-links .nav-link:first-child {
   border-left: none;
@@ -175,4 +181,9 @@ body {
   max-height: 9999px;
   padding: 20px 20px 65px;
   z-index: 1;
+}
+@media (max-width: 400px) {
+  .page.active {
+    padding: 20px 20px 60px;
+  }
 }
