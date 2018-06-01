@@ -97,6 +97,11 @@ body {
   font-size: 200%;
   height: 170px;
 }
+@media (max-width: 400px) {
+  .main-link-animation.active {
+    font-size: 125%;
+  }
+}
 .main-link-animation.inactive {
   transform: translate3d(-100%, 0, 0);
 }
