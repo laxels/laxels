@@ -2,11 +2,93 @@ html, body, #root {
   height: 100%;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  text-align: center;
 }
 
 .page {
+  min-height: 100%;
+  position: relative;
+}
+
+.page .page-header {
+  position: relative;
+  height: 170px;
+  background: #4286f4;
+}
+
+.page .page-header .profile {
+  border: 3px solid white;
+  height: 150px;
+  width: 150px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+}
+.page .page-header .profile img {
+  height: 100%;
+  width: 100%;
+}
+
+.page-links {
+  position: absolute;
+  top: 170px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 30px;
+  font-family: 'Aldrich';
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+.page-links.page-active {
+}
+
+.page-links .page-link {
+  position: relative;
+  height: 33.33%;
+  cursor: pointer;
+}
+
+.page-links .page-link.green {
+  background: #2cd673;
+}
+.page-links .page-link.red {
+  background: #c92222;
+}
+.page-links .page-link.purple {
+  background: #9f25c4;
+}
+
+.page-links .page-link:before {
+  content: '';
+  height: 100%;
+}
+.page-links .page-link:before,
+.page-links .page-link span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.page-link-animation {
+  transition: transform 1s ease-out;
+}
+.page-link-animation.active {
+  z-index: 1;
+  font-size: 150%;
+}
+.page-link-animation.inactive {
+  transform: translate3d(-100%, 0, 0);
+  height: 0;
 }
