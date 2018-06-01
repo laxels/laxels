@@ -9,22 +9,25 @@ html, body, #root {
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
   text-align: center;
+  color: rgb(119,119,119);
 }
 
-.page {
+.page-container {
   min-height: 100%;
   position: relative;
 }
 
-.page .page-header {
+
+.page-header {
   position: relative;
   height: 170px;
   background: #4286f4;
 }
 
-.page .page-header .profile {
+.page-header .profile {
   border: 3px solid white;
   height: 150px;
   width: 150px;
@@ -33,62 +36,116 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  z-index: 1;
 }
-.page .page-header .profile img {
+.page-header .profile img {
   height: 100%;
   width: 100%;
 }
 
-.page-links {
+
+.main-links {
   position: absolute;
   top: 170px;
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 30px;
+  font-size: 200%;
   font-family: 'Aldrich';
   font-weight: bold;
   color: white;
   text-transform: uppercase;
+  transition: top .8s;
 }
-.page-links.page-active {
+.main-links.page-active {
+  top: 0;
 }
 
-.page-links .page-link {
+.main-links .main-link {
   position: relative;
   height: 33.33%;
   cursor: pointer;
 }
 
-.page-links .page-link.green {
+.main-links .main-link.green {
   background: #2cd673;
 }
-.page-links .page-link.red {
+.main-links .main-link.red {
   background: #c92222;
 }
-.page-links .page-link.purple {
+.main-links .main-link.purple {
   background: #9f25c4;
 }
 
-.page-links .page-link:before {
+.main-links .main-link:before {
   content: '';
   height: 100%;
 }
-.page-links .page-link:before,
-.page-links .page-link span {
+.main-links .main-link:before,
+.main-links .main-link span {
   display: inline-block;
   vertical-align: middle;
 }
 
-.page-link-animation {
-  transition: transform 1s ease-out;
+.main-link-animation {
+  transition: transform .8s ease-out, height .8s ease, font-size .8s ease;
+  transform: translate3d(0, 0, 0);
 }
-.page-link-animation.active {
-  z-index: 1;
-  font-size: 150%;
+.main-link-animation.active {
+  font-size: 200%;
+  height: 170px;
 }
-.page-link-animation.inactive {
+.main-link-animation.inactive {
   transform: translate3d(-100%, 0, 0);
+}
+.main-link-animation.inactive:not(.page-header) {
   height: 0;
+}
+
+
+.nav-links {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Aldrich';
+  text-transform: uppercase;
+  line-height: 50px;
+}
+
+.nav-links .nav-link {
+  display: inline-block;
+  vertical-align: top;
+  width: 25%;
+  cursor: pointer;
+  background: white;
+}
+.nav-links .nav-link.blue {
+  color: #4286f4;
+}
+.nav-links .nav-link.green {
+  color: #2cd673;
+}
+.nav-links .nav-link.red {
+  color: #c92222;
+}
+.nav-links .nav-link.purple {
+  color: #9f25c4;
+}
+
+
+.page {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  padding: 0;
+  transition: opacity 1s, max-height 0s, padding 0s;
+  text-align: left;
+  margin: 0 auto;
+  max-width: 700px;
+}
+.page.active {
+  opacity: 1;
+  max-height: 9999px;
+  padding: 20px 0 50px;
+  z-index: 1;
 }
