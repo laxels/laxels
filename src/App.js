@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import smoothScroll from 'smoothscroll';
 import profile from './profile.jpg';
 import './App.css';
 
@@ -9,24 +10,26 @@ class App extends PureComponent {
   }
 
   pages = [
-    'About',
     'Projects',
+    'About',
     'Contact'
   ]
 
   pageColors = {
-    About: 'green',
-    Projects: 'red',
-    Contact: 'purple'
+    Projects: 'green',
+    About: 'yellow',
+    Contact: 'red'
   }
 
   mainLink = (page) => {
-    const active = this.state.activePage === page;
-    const inactive = !active && !!this.state.activePage;
+    const {activePage, lastActivePage} = this.state;
+    const active = activePage === page;
+    const inactive = !active && activePage;
+    const switching = activePage && lastActivePage;
     return (
       <div
         key={page}
-        className={`main-link main-link-animation ${this.pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''}`}
+        className={`main-link main-link-animation ${this.pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''}`}
         onClick={() => this.activatePage(page)}
         style={this.transitionDelay(page)}
       >
@@ -55,7 +58,7 @@ class App extends PureComponent {
       <div
         key={page}
         className={`page ${activePage === page ? 'active' : ''}`}
-        style={this.transitionDelay('page')}
+        style={this.transitionDelay('page', page)}
       >
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc mollis dui nec sagittis imperdiet. Quisque pulvinar tempus arcu vitae elementum. Sed pulvinar vestibulum mauris, vestibulum molestie urna vehicula sit amet. Donec in laoreet neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec tincidunt tortor in lacus laoreet bibendum id id magna. Nam at urna hendrerit, condimentum odio ultrices, auctor risus. Curabitur interdum gravida purus, et ornare ex dignissim a. Nulla facilisi. Integer suscipit nunc et diam faucibus, ut auctor sapien auctor. Cras rutrum malesuada nulla eu ultrices. Donec eget mi lacinia, congue nunc ac, sodales quam. Ut a mauris quis nunc feugiat scelerisque. Nulla facilisi.</p>
         <p>Pellentesque vel ante scelerisque, blandit leo non, faucibus erat. Nullam commodo tortor euismod erat laoreet tincidunt. Aliquam vitae enim a diam vulputate pharetra rhoncus eget purus. Donec sit amet commodo eros. Donec id ante a libero porta rutrum et ac ex. Sed sed posuere dui. Sed molestie tristique ullamcorper. Maecenas malesuada diam eros, a facilisis quam venenatis sed.</p>
@@ -64,12 +67,25 @@ class App extends PureComponent {
     );
   }
 
-  activatePage = (page) => this.setState({activePage: page})
-  deactivatePages = () => this.setState({activePage: undefined})
+  activatePage = (page) => {
+    this.setState(prevState => ({activePage: page, lastActivePage: prevState.activePage}));
+    smoothScroll(0);
+  }
+  deactivatePages = () => {
+    this.setState(prevState => ({activePage: undefined, lastActivePage: prevState.activePage}));
+    smoothScroll(0);
+  }
 
-  transitionDelay = (el) => {
-    const {activePage} = this.state;
-    if (!activePage) return {};
+  transitionDelay = (el, page) => {
+    let {activePage, lastActivePage} = this.state;
+    let deactivating, switching;
+    if (!activePage) {
+      deactivating = true;
+      activePage = lastActivePage;
+    }
+    else if (activePage && lastActivePage) {
+      switching = true;
+    }
 
     const step = .2;
 
@@ -79,11 +95,33 @@ class App extends PureComponent {
     const distanceFromActive = Math.abs(activePageIndex - this.pages.indexOf(el));
 
     const transformDelay = (maxDistanceFromActive - distanceFromActive) * step;
+    const flippedTransformDelay = (distanceFromActive-1) * step;
     const heightDelay = (maxDistanceFromActive-1) * step + .8;
 
-    if (el === 'main-links-container') return {transitionDelay: `${heightDelay}s`};
-    if (el === 'page') return {transitionDelay: `${heightDelay+.8}s`};
-    return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s`};
+    if (!deactivating && !switching) {
+      if (el === 'main-links-container') return {transitionDelay: `${heightDelay}s`};
+      if (el === 'page' || el === 'nav') return {transitionDelay: `${heightDelay+.8}s`};
+      return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s`};
+    }
+    else if (switching) {
+      if (el === 'main-links-container' || el === 'nav') return {};
+      if (el === 'page') {
+        if (page === activePage) return {transitionDelay: `.8s, .8s, .8s`};
+        else return {transitionDelay: `0s, .8s, .8s`}
+      }
+      if (el === activePage) {
+        return {transitionDelay: `.8s, .8s, .8s`};
+      }
+      else {
+        return {transitionDelay: `0s, .8s, .8s`};
+      }
+    }
+    else {
+      if (el === 'main-links-container') return {transitionDelay: `.8s`};
+      if (el === 'page') return {transitionDelay: `0s, .8s, .8s`};
+      if (el === 'nav') return {transitionDelay: `0s, .8s`};
+      return {transitionDelay: `${flippedTransformDelay+1.6}s, .8s, .8s`};
+    }
   }
 
   render() {
@@ -109,7 +147,10 @@ class App extends PureComponent {
 
         {this.pages.map(this.page)}
 
-        <nav className="nav-links">
+        <nav
+          className={`nav-links ${!!activePage ? '' : 'hidden'}`}
+          style={this.transitionDelay('nav')}
+        >
           <div
             className={`nav-link nav-link-animation blue`}
             onClick={this.deactivatePages}

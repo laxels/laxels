@@ -24,7 +24,7 @@ body {
 .page-header {
   position: relative;
   height: 170px;
-  background: #4286f4;
+  background: #2D95BF;
 }
 
 .page-header .profile {
@@ -67,13 +67,13 @@ body {
 }
 
 .main-links .main-link.green {
-  background: #2cd673;
+  background: #85C440;
+}
+.main-links .main-link.yellow {
+  background: #F0C419;
 }
 .main-links .main-link.red {
-  background: #c92222;
-}
-.main-links .main-link.purple {
-  background: #9f25c4;
+  background: #F15A5A;
 }
 
 .main-links .main-link:before {
@@ -89,6 +89,9 @@ body {
 .main-link-animation {
   transition: transform .8s ease-out, height .8s ease, font-size .8s ease;
   transform: translate3d(0, 0, 0);
+}
+.main-link-animation.switching {
+  transition-duration: .8s, 0s, 0s;
 }
 .main-link-animation.active {
   font-size: 200%;
@@ -110,6 +113,11 @@ body {
   font-family: 'Aldrich';
   text-transform: uppercase;
   line-height: 50px;
+  transition: transform .8s, visibility 0s;
+}
+.nav-links.hidden {
+  transform: translate3d(0, 100%, 0);
+  visibility: hidden;
 }
 
 .nav-links .nav-link {
@@ -118,18 +126,27 @@ body {
   width: 25%;
   cursor: pointer;
   background: white;
+  border-left: 1px solid #E5E5E5;
+  border-top: 15px solid;
+}
+.nav-links .nav-link:first-child {
+  border-left: none;
 }
 .nav-links .nav-link.blue {
-  color: #4286f4;
+  color: #2D95BF;
+  border-top-color: #2D95BF;
 }
 .nav-links .nav-link.green {
-  color: #2cd673;
+  color: #85C440;
+  border-top-color: #85C440;
+}
+.nav-links .nav-link.yellow {
+  color: #F0C419;
+  border-top-color: #F0C419;
 }
 .nav-links .nav-link.red {
-  color: #c92222;
-}
-.nav-links .nav-link.purple {
-  color: #9f25c4;
+  color: #F15A5A;
+  border-top-color: #F15A5A;
 }
 
 
@@ -137,8 +154,8 @@ body {
   overflow: hidden;
   opacity: 0;
   max-height: 0;
-  padding: 0;
-  transition: opacity 1s, max-height 0s, padding 0s;
+  padding: 0 20px;
+  transition: opacity .8s, max-height 0s, padding 0s;
   text-align: left;
   margin: 0 auto;
   max-width: 700px;
@@ -146,6 +163,6 @@ body {
 .page.active {
   opacity: 1;
   max-height: 9999px;
-  padding: 20px 0 50px;
+  padding: 20px 20px 65px;
   z-index: 1;
 }
