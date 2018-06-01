@@ -120,6 +120,11 @@ body {
   line-height: 50px;
   transition: transform .8s, visibility 0s;
 }
+@media (max-width: 400px) {
+  .nav-links {
+    font-size: 75%;
+  }
+}
 .nav-links.hidden {
   transform: translate3d(0, 100%, 0);
   visibility: hidden;
