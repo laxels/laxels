@@ -21,6 +21,22 @@ body {
 }
 
 
+a {
+  color: #2D95BF;
+  text-decoration: none;
+}
+a:hover {
+  color: #85C440;
+}
+
+h2 {
+  color: #F15A5A;
+  margin: 1em 0 .7em;
+  font-size: 200%;
+  font-weight: 400;
+}
+
+
 .page-header {
   position: relative;
   height: 170px;
@@ -167,6 +183,7 @@ body {
 
 
 .page {
+  position: relative;
   overflow: hidden;
   opacity: 0;
   max-height: 0;
@@ -179,11 +196,16 @@ body {
 .page.active {
   opacity: 1;
   max-height: 9999px;
-  padding: 20px 20px 65px;
+  padding: 0 20px 65px;
   z-index: 1;
 }
 @media (max-width: 400px) {
   .page.active {
-    padding: 20px 20px 60px;
+    padding: 0 20px 60px;
   }
+}
+
+
+.Contact-page p {
+  line-height: 1.5em;
 }
