@@ -218,8 +218,8 @@ class App extends PureComponent {
       switching = true;
     }
 
-    const step = .2;
-    const duration = .8;
+    const step = .15;
+    const duration = .6;
 
     const activePageIndex = PAGES.indexOf(activePage);
     const lastPageIndex = PAGES.length - 1;
