@@ -73,7 +73,7 @@ class App extends PureComponent {
       case 'About':
         content = (<Wrap>
           <p>
-            Hi there! I'm a full-stack web developer who loves making apps as fun and pretty as I am. :P
+            Hi there! I'm a full-stack web developer who loves making apps as fun, pretty, and bug-free as I am. :P
           </p>
 
           <h2>Career Timeline</h2>
@@ -89,6 +89,21 @@ class App extends PureComponent {
 
           <h2>Education</h2>
           <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
+
+          <h2>Other Stuff</h2>
+          <p>
+            My hobbies include:
+            <br/>
+            - Attending concerts/festivals
+            <br/>
+            - Karaoke/clubbing with friends
+            <br/>
+            - Video games/TV
+            <br/>
+            - Stuffing myself
+            <br/>
+            - Long walks with music
+          </p>
 
           <h2>Social Media</h2>
           <p>

@@ -14,6 +14,11 @@ body {
   text-align: center;
   color: rgb(119,119,119);
 }
+@media (max-width: 400px) {
+  body {
+    font-size: 14px;
+  }
+}
 
 .page-container {
   min-height: 100%;
@@ -34,6 +39,10 @@ h2 {
   margin: 1em 0 .7em;
   font-size: 200%;
   font-weight: 400;
+}
+
+p {
+  line-height: 1.5;
 }
 
 .page > p:first-child {
@@ -120,7 +129,7 @@ h2 {
 }
 @media (max-width: 400px) {
   .main-link-animation.active {
-    font-size: 125%;
+    font-size: 135%;
   }
 }
 .main-link-animation.inactive {
@@ -144,7 +153,7 @@ h2 {
 }
 @media (max-width: 400px) {
   .nav-links {
-    font-size: 75%;
+    font-size: 80%;
     line-height: 40px;
   }
 }
@@ -197,7 +206,7 @@ h2 {
   transition: opacity .8s, max-height 0s, padding 0s;
   text-align: left;
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 740px;
 }
 .page.active {
   opacity: 1;
@@ -225,9 +234,4 @@ h2 {
 }
 .About-page .social-media.linkedin img {
   transform: translateY(-.5px) scale(1.11);
-}
-
-
-.Contact-page p {
-  line-height: 1.5em;
 }
