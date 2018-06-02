@@ -5,6 +5,10 @@ import smoothScroll from 'smoothscroll';
 import profile from './profile.jpg';
 import fbIcon from './fb-icon.svg';
 import liIcon from './li-icon.svg';
+import utLogo from './ut-logo.png';
+import lokuLogo from './loku-logo.webp';
+import crowdmedLogo from './crowdmed-logo.png';
+import pixelkeetLogo from './pixelkeet-logo.jpg';
 import './App.css';
 
 
@@ -81,7 +85,58 @@ class App extends PureComponent {
           </p>
 
           <h2>Career Timeline</h2>
-          <p>Work in progress</p>
+          <p>Hover or tap on the icons for details!</p>
+          <div className="timeline">
+            <div className="timeline-sec" style={{width: '6.25%'}}>
+              <div className="sec-fill ut"/>
+            </div>
+            <div className="timeline-sec" style={{width: '18.75%'}}>
+              <div className="sec-fill ut half"/>
+              <div className="sec-fill loku half"/>
+            </div>
+            <div className="timeline-sec" style={{width: '6.25%'}}>
+              <div className="sec-fill ut"/>
+            </div>
+            <div className="timeline-sec" style={{width: '50%'}}>
+              <div className="sec-fill crowdmed"/>
+            </div>
+            <div className="timeline-sec" style={{width: '18.75%'}}>
+              <div className="sec-fill pixelkeet"/>
+            </div>
+            <div className="timeline-label top-label" style={{left: '15.625%'}}>
+              <img src={utLogo} alt="University of Texas at Austin logo"/>
+              <div className="text">
+                <span>BS Computer Science</span>
+                <span>@ UT Austin (2010-2012)</span>
+              </div>
+              <div className="tick ut"/>
+            </div>
+            <div className="timeline-label" style={{left: '15.625%'}}>
+              <img src={lokuLogo} alt="Loku logo"/>
+              <div className="text">
+                <span>Software Engineer</span>
+                <span>@ Loku (2011-2012)</span>
+              </div>
+              <div className="tick loku"/>
+            </div>
+            <div className="timeline-label" style={{left: '56.25%'}}>
+              <img src={crowdmedLogo} alt="CrowdMed logo"/>
+              <div className="text">
+                <span>Technical Co-Founder</span>
+                <span>& Lead Developer</span>
+                <span>@ CrowdMed (2012-2016)</span>
+              </div>
+              <div className="tick crowdmed"/>
+            </div>
+            <div className="timeline-label" style={{left: '90.625%'}}>
+              <img src={pixelkeetLogo} alt="Pixelkeet logo"/>
+              <div className="text">
+                <span>Freelance Developer</span>
+                <span>@ Pixelkeet (2016+)</span>
+              </div>
+              <div className="tick pixelkeet"/>
+            </div>
+          </div>
 
           <h2>Experience</h2>
           <p>Front-end frameworks: React, Angular, Backbone</p>
@@ -143,7 +198,9 @@ class App extends PureComponent {
         className={`page ${page}-page ${activePage === page ? 'active' : ''}`}
         style={this.transitionDelay('page', page)}
       >
-        {content}
+        <div className="page-content">
+          {content}
+        </div>
       </div>
     );
   }
@@ -193,7 +250,7 @@ class App extends PureComponent {
       if (el === 'main-links-container') return {transitionDelay: `${duration}s`};
       if (el === 'page') return {transitionDelay: `0s, ${duration}s, ${duration}s`};
       if (el === 'nav') return {transitionDelay: `0s, ${duration}s`};
-      return {transitionDelay: `${flippedTransformDelay+1.6}s, ${duration}s, ${duration}s`};
+      return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s`};
     }
   }
 
