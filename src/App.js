@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import smoothScroll from 'smoothscroll';
 import profile from './profile.jpg';
+import fbIcon from './fb-icon.svg';
+import liIcon from './li-icon.svg';
 import './App.css';
 
 const Wrap = ({children}) => children;
@@ -61,13 +63,42 @@ class App extends PureComponent {
       case 'Projects':
         content = (<Wrap>
           <h2>Gaudy Stuff</h2>
+          <p>Work in progress</p>
           <h2>Websites</h2>
+          <p>Work in progress</p>
           <h2>Plugins</h2>
+          <p>Work in progress</p>
         </Wrap>);
         break;
       case 'About':
         content = (<Wrap>
+          <p>
+            Hi there! I'm a full-stack web developer who loves making apps as fun and pretty as I am. :P
+          </p>
+
+          <h2>Career Timeline</h2>
+          <p>Work in progress</p>
+
+          <h2>Experience</h2>
+          <p>Front-end frameworks: React, Angular, Backbone</p>
+          <p>Back-end frameworks: Node.js, Django</p>
+          <p>Databases: PostgreSQL, MySQL, MongoDB</p>
+          <p>Services: AWS, Heroku, etc.</p>
+          <p>Misc: Redis, ElasticSearch, etc.</p>
+          <p>Languages: JavaScript, Python, Java, Haskell</p>
+
+          <h2>Education</h2>
+          <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
+
           <h2>Social Media</h2>
+          <p>
+            <a href="https://www.facebook.com/laxels" target="_blank" rel="noopener noreferrer" className="social-media facebook">
+              <img src={fbIcon} alt="Facebook"/>
+            </a>
+            <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer" className="social-media linkedin">
+              <img src={liIcon} alt="LinkedIn"/>
+            </a>
+          </p>
         </Wrap>);
         break;
       case 'Contact':
@@ -161,13 +192,6 @@ class App extends PureComponent {
     return (
       <div className="page-container">
 
-        <nav
-          className={`main-links ${!!activePage ? 'page-active' : ''}`}
-          style={this.transitionDelay('main-links-container')}
-        >
-          {this.pages.map(this.mainLink)}
-        </nav>
-
         <header
           className={`page-header main-link-animation ${!!activePage ? 'inactive' : ''}`}
           style={this.transitionDelay('header')}
@@ -176,6 +200,13 @@ class App extends PureComponent {
             <img src={profile} alt="Profile"/>
           </a>
         </header>
+
+        <nav
+          className={`main-links ${!!activePage ? 'page-active' : ''}`}
+          style={this.transitionDelay('main-links-container')}
+        >
+          {this.pages.map(this.mainLink)}
+        </nav>
 
         {this.pages.map(this.page)}
 
