@@ -5,7 +5,9 @@ import fbIcon from './fb-icon.svg';
 import liIcon from './li-icon.svg';
 import './App.css';
 
+
 const Wrap = ({children}) => children;
+
 
 class App extends PureComponent {
   constructor(props) {
@@ -242,5 +244,6 @@ class App extends PureComponent {
     );
   }
 }
+
 
 export default App;
