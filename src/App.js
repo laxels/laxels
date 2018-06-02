@@ -1,10 +1,24 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import smoothScroll from 'smoothscroll';
 import profile from './profile.jpg';
 import fbIcon from './fb-icon.svg';
 import liIcon from './li-icon.svg';
 import './App.css';
 
+
+const PAGES = [
+  'projects',
+  'about',
+  'contact'
+];
+
+const PAGE_COLORS = {
+  projects: 'green',
+  about: 'yellow',
+  contact: 'red'
+};
 
 const Wrap = ({children}) => children;
 
@@ -15,32 +29,20 @@ class App extends PureComponent {
     this.state = {};
   }
 
-  pages = [
-    'Projects',
-    'About',
-    'Contact'
-  ]
-
-  pageColors = {
-    Projects: 'green',
-    About: 'yellow',
-    Contact: 'red'
-  }
-
   mainLink = (page) => {
     const {activePage, lastActivePage} = this.state;
     const active = activePage === page;
     const inactive = !active && activePage;
     const switching = activePage && lastActivePage;
     return (
-      <div
+      <Link
         key={page}
-        className={`main-link main-link-animation ${this.pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''}`}
-        onClick={() => this.activatePage(page)}
+        className={`main-link main-link-animation ${PAGE_COLORS[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''}`}
+        to={`/${page}`}
         style={this.transitionDelay(page)}
       >
         <span>{page}</span>
-      </div>
+      </Link>
     );
   }
 
@@ -48,13 +50,13 @@ class App extends PureComponent {
     const active = this.state.activePage === page;
     const inactive = !active && !!this.state.activePage;
     return (
-      <div
+      <Link
         key={page}
-        className={`nav-link nav-link-animation ${this.pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''}`}
-        onClick={() => this.activatePage(page)}
+        to={`/${page}`}
+        className={`nav-link nav-link-animation ${PAGE_COLORS[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''}`}
       >
         <span>{page}</span>
-      </div>
+      </Link>
     );
   }
 
@@ -62,7 +64,7 @@ class App extends PureComponent {
     const {activePage} = this.state;
     let content;
     switch (page) {
-      case 'Projects':
+      case 'projects':
         content = (<Wrap>
           <h2>Gaudy Stuff</h2>
           <p>Work in progress</p>
@@ -72,7 +74,7 @@ class App extends PureComponent {
           <p>Work in progress</p>
         </Wrap>);
         break;
-      case 'About':
+      case 'about':
         content = (<Wrap>
           <p>
             Hi there! I'm a full-stack web developer who loves making apps as fun, pretty, and bug-free as I am. :P
@@ -118,7 +120,7 @@ class App extends PureComponent {
           </p>
         </Wrap>);
         break;
-      case 'Contact':
+      case 'contact':
         content = (<Wrap>
           <h2>Hit me up!</h2>
           <p>
@@ -146,15 +148,6 @@ class App extends PureComponent {
     );
   }
 
-  activatePage = (page) => {
-    this.setState(prevState => ({activePage: page, lastActivePage: prevState.activePage}));
-    smoothScroll(0);
-  }
-  deactivatePages = () => {
-    this.setState(prevState => ({activePage: undefined, lastActivePage: prevState.activePage}));
-    smoothScroll(0);
-  }
-
   transitionDelay = (el, page) => {
     let {activePage, lastActivePage} = this.state;
     let deactivating, switching;
@@ -169,10 +162,10 @@ class App extends PureComponent {
     const step = .2;
     const duration = .8;
 
-    const activePageIndex = this.pages.indexOf(activePage);
-    const lastPageIndex = this.pages.length - 1;
+    const activePageIndex = PAGES.indexOf(activePage);
+    const lastPageIndex = PAGES.length - 1;
     const maxDistanceFromActive = Math.max(activePageIndex+1, lastPageIndex-activePageIndex);
-    const distanceFromActive = Math.abs(activePageIndex - this.pages.indexOf(el));
+    const distanceFromActive = Math.abs(activePageIndex - PAGES.indexOf(el));
 
     const transformDelay = (maxDistanceFromActive - distanceFromActive) * step;
     const flippedTransformDelay = (distanceFromActive-1) * step;
@@ -204,13 +197,28 @@ class App extends PureComponent {
     }
   }
 
+  static getDerivedStateFromProps(props, state) {
+    const url = props.location.pathname;
+    const page = url.split('/')[1];
+    if (page && PAGES.indexOf(page) === -1) {
+      props.history.replace('/');
+      return null;
+    }
+    if (url !== state.url) return {url: url, activePage: page, lastActivePage: state.activePage};
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.activePage !== this.state.activePage) smoothScroll(0);
+  }
+
   render() {
     const {activePage} = this.state;
     return (
       <div className="page-container">
 
         <header
-          className={`page-header main-link-animation ${!!activePage ? 'inactive' : ''}`}
+          className={`page-header main-link-animation ${activePage ? 'inactive' : ''}`}
           style={this.transitionDelay('header')}
         >
           <a className="profile" href="//www.facebook.com/laxels" target="_blank" rel="noopener noreferrer">
@@ -219,25 +227,25 @@ class App extends PureComponent {
         </header>
 
         <nav
-          className={`main-links ${!!activePage ? 'page-active' : ''}`}
+          className={`main-links ${activePage ? 'page-active' : ''}`}
           style={this.transitionDelay('main-links-container')}
         >
-          {this.pages.map(this.mainLink)}
+          {PAGES.map(this.mainLink)}
         </nav>
 
-        {this.pages.map(this.page)}
+        {PAGES.map(this.page)}
 
         <nav
-          className={`nav-links ${!!activePage ? '' : 'hidden'}`}
+          className={`nav-links ${activePage ? '' : 'hidden'}`}
           style={this.transitionDelay('nav')}
         >
-          <div
+          <Link
+            to="/"
             className={`nav-link nav-link-animation blue`}
-            onClick={this.deactivatePages}
           >
             <span>Home</span>
-          </div>
-          {this.pages.map(this.navLink)}
+          </Link>
+          {PAGES.map(this.navLink)}
         </nav>
 
       </div>
@@ -246,4 +254,4 @@ class App extends PureComponent {
 }
 
 
-export default App;
+export default withRouter(App);
