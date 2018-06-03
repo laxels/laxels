@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import smoothScroll from 'smoothscroll';
+import Konami from 'konami';
 import profile from './profile.jpg';
 import fbIcon from './fb-icon.svg';
 import liIcon from './li-icon.svg';
@@ -31,6 +32,27 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    new Konami(() => {
+      alert('Konami Code!');
+    });
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const url = props.location.pathname;
+    const page = url.split('/')[1];
+    if (page && PAGES.indexOf(page) === -1) {
+      props.history.replace('/');
+      return null;
+    }
+    if (url !== state.url) return {url: url, activePage: page, lastActivePage: state.activePage};
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.activePage !== this.state.activePage) smoothScroll(0);
   }
 
   mainLink = (page) => {
@@ -70,12 +92,17 @@ class App extends PureComponent {
     switch (page) {
       case 'projects':
         content = (<Wrap>
-          <h2>Gaudy Stuff</h2>
-          <p>Work in progress</p>
-          <h2>Websites</h2>
-          <p>Work in progress</p>
-          <h2>Plugins</h2>
-          <p>Work in progress</p>
+          <h2>Cool Stuff</h2>
+          <p>Gaudy Transitions (Coming soon!)</p>
+          <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Battle Network Arena</a></p>
+          <p><a href="https://chrome.google.com/webstore/detail/haunted-by-poyo/jcdbalpjodfkfogbhhfpldijbnnmpbpc" target="_blank" rel="noopener noreferrer">Haunted By Poyo</a></p>
+
+          <h2>Reinventing The Wheel</h2>
+          <p>Just for additional practice.</p>
+          <p><a href="https://github.com/laxels/password-strength" target="_blank" rel="noopener noreferrer">Password strength meter</a></p>
+          <p><a href="https://github.com/laxels/select" target="_blank" rel="noopener noreferrer">Styled selects</a></p>
+          <p><a href="https://github.com/laxels/overlay" target="_blank" rel="noopener noreferrer">Overlay</a></p>
+          <p><a href="https://github.com/laxels/autocomplete" target="_blank" rel="noopener noreferrer">Autocomplete</a></p>
         </Wrap>);
         break;
       case 'about':
@@ -254,21 +281,6 @@ class App extends PureComponent {
       if (el === 'nav') return {transitionDelay: `0s, ${duration}s`};
       return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s`};
     }
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    const url = props.location.pathname;
-    const page = url.split('/')[1];
-    if (page && PAGES.indexOf(page) === -1) {
-      props.history.replace('/');
-      return null;
-    }
-    if (url !== state.url) return {url: url, activePage: page, lastActivePage: state.activePage};
-    return null;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.activePage !== this.state.activePage) smoothScroll(0);
   }
 
   render() {
