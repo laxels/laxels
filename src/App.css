@@ -23,6 +23,23 @@ body {
 .page-container {
   min-height: 100%;
   position: relative;
+  padding-top: 170px;
+}
+@media (min-width: 901px) {
+  .page-container {
+    padding-left: 65px;
+  }
+}
+@media (max-width: 900px) {
+  .page-container {
+    padding-bottom: 65px;
+  }
+}
+@media (max-width: 400px) {
+  .page-container {
+    padding-top: 120px;
+    padding-bottom: 50px;
+  }
 }
 
 
@@ -51,7 +68,10 @@ p {
 
 
 .page-header {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 170px;
   background: #2D95BF;
   z-index: 1;
@@ -135,15 +155,20 @@ p {
 }
 
 .main-link-animation {
-  transition: transform .6s ease-out, height .6s ease, font-size .6s ease;
+  transition: transform .6s ease-out, height .6s, font-size .6s, margin-left .6s;
   transform: translate3d(0, 0, 0);
 }
 .main-link-animation.switching {
-  transition-duration: .6s, 0s, 0s;
+  transition-duration: .6s, 0s, 0s, 0s;
 }
 .main-link-animation.active {
   font-size: 200%;
   height: 170px;
+}
+@media (min-width: 901px) {
+  .main-link-animation.active {
+    margin-left: 65px;
+  }
 }
 @media (max-width: 400px) {
   .main-link-animation.active {
@@ -161,58 +186,121 @@ p {
 
 .nav-links {
   position: fixed;
-  bottom: 0;
   left: 0;
-  right: 0;
+  top: 0;
+  bottom: 0;
   font-family: 'Aldrich';
   text-transform: uppercase;
-  line-height: 50px;
-  transition: transform .6s, visibility 0s;
   z-index: 1;
+  transition: transform .6s, visibility 0s;
+}
+@media (max-width: 900px) {
+  .nav-links {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
 @media (max-width: 400px) {
   .nav-links {
     font-size: 80%;
-    line-height: 40px;
   }
 }
 .nav-links.hidden {
-  transform: translate3d(0, 100%, 0);
+  transform: translate3d(-100%, 0, 0);
   visibility: hidden;
+}
+@media (max-width: 900px) {
+  .nav-links.hidden {
+    transform: translate3d(0, 100%, 0);
+  }
 }
 
 .nav-links .nav-link {
-  display: inline-block;
-  vertical-align: top;
-  width: 25%;
+  display: block;
   cursor: pointer;
   background: white;
-  border-left: 1px solid #E5E5E5;
-  border-top: 15px solid;
+  height: 25%;
+  width: 65px;
+  border-top: 1px solid #E5E5E5;
+  border-right: 15px solid;
+}
+@media (max-width: 900px) {
+  .nav-links .nav-link {
+    display: inline-block;
+    vertical-align: top;
+    height: 65px;
+    width: 25%;
+    border-right: none;
+    border-left: 1px solid #E5E5E5;
+    border-top: 15px solid !important;
+  }
 }
 @media (max-width: 400px) {
   .nav-links .nav-link {
+    height: 50px;
     border-top-width: 10px;
   }
 }
+.nav-links .nav-link:before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+}
+.nav-links .nav-link span {
+  display: inline-block;
+  vertical-align: middle;
+  overflow-wrap: break-word;
+  width: 1.25em;
+}
+@media (min-width: 801px) and (max-height: 600px) {
+  .nav-links .nav-link span {
+    font-size: 80%;
+  }
+}
+@media (max-width: 900px) {
+  .nav-links .nav-link span {
+    overflow-wrap: normal;
+    width: auto;
+  }
+}
 .nav-links .nav-link:first-child {
-  border-left: none;
+  border-top: none;
 }
 .nav-links .nav-link.blue {
   color: #2D95BF;
-  border-top-color: #2D95BF;
+  border-right-color: #2D95BF;
 }
 .nav-links .nav-link.green {
   color: #85C440;
-  border-top-color: #85C440;
+  border-right-color: #85C440;
 }
 .nav-links .nav-link.yellow {
   color: #F0C419;
-  border-top-color: #F0C419;
+  border-right-color: #F0C419;
 }
 .nav-links .nav-link.red {
   color: #F15A5A;
-  border-top-color: #F15A5A;
+  border-right-color: #F15A5A;
+}
+@media (max-width: 900px) {
+  .nav-links .nav-link:first-child {
+    border-left: none;
+  }
+  .nav-links .nav-link.blue {
+    border-top-color: #2D95BF;
+  }
+  .nav-links .nav-link.green {
+    border-top-color: #85C440;
+  }
+  .nav-links .nav-link.yellow {
+    border-top-color: #F0C419;
+  }
+  .nav-links .nav-link.red {
+    border-top-color: #F15A5A;
+  }
 }
 
 
@@ -221,19 +309,13 @@ p {
   opacity: 0;
   max-height: 0;
   padding: 0 20px;
-  transition: opacity .6s, max-height 0s, padding 0s;
+  transition: opacity .6s, max-height 0s;
   overflow: hidden;
 }
 .page.active {
   opacity: 1;
   max-height: 9999px;
-  padding: 0 20px 65px;
   z-index: 1;
-}
-@media (max-width: 400px) {
-  .page.active {
-    padding: 0 20px 60px;
-  }
 }
 .page .page-content {
   text-align: left;

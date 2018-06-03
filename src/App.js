@@ -245,7 +245,7 @@ class App extends PureComponent {
       switching = true;
     }
 
-    const step = .15;
+    const step = .2;
     const duration = .6;
 
     const activePageIndex = PAGES.indexOf(activePage);
@@ -260,33 +260,33 @@ class App extends PureComponent {
     if (!deactivating && !switching) {
       if (el === 'main-links-container') return {transitionDelay: `${heightDelay}s`};
       if (el === 'page' || el === 'nav') return {transitionDelay: `${heightDelay+duration}s`};
-      return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s`};
+      return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s, ${heightDelay+duration}s`};
     }
     else if (switching) {
       if (el === 'main-links-container' || el === 'nav') return {};
       if (el === 'page') {
-        if (page === activePage) return {transitionDelay: `${duration}s, ${duration}s, ${duration}s`};
-        else return {transitionDelay: `0s, ${duration}s, ${duration}s`}
+        if (page === activePage) return {transitionDelay: `${duration}s, ${duration}s`};
+        else return {transitionDelay: `0s, ${duration}s`}
       }
       if (el === activePage) {
-        return {transitionDelay: `${duration}s, ${duration}s, ${duration}s`};
+        return {transitionDelay: `${duration}s, ${duration}s, ${duration}s, ${duration}s`};
       }
       else {
-        return {transitionDelay: `0s, ${duration}s, ${duration}s`};
+        return {transitionDelay: `0s, ${duration}s, ${duration}s, ${duration}s`};
       }
     }
     else {
       if (el === 'main-links-container') return {transitionDelay: `${duration}s`};
-      if (el === 'page') return {transitionDelay: `0s, ${duration}s, ${duration}s`};
+      if (el === 'page') return {transitionDelay: `0s, ${duration}s`};
       if (el === 'nav') return {transitionDelay: `0s, ${duration}s`};
-      return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s`};
+      return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s, 0s`};
     }
   }
 
   render() {
     const {activePage} = this.state;
     return (
-      <div className="page-container">
+      <div className={`page-container ${activePage ? 'page-active' : ''}`}>
 
         <header
           className={`page-header main-link-animation ${activePage ? 'inactive' : ''}`}
