@@ -260,7 +260,7 @@ class App extends PureComponent {
     if (!deactivating && !switching) {
       if (el === 'main-links-container') return {transitionDelay: `${heightDelay}s`};
       if (el === 'page' || el === 'nav') return {transitionDelay: `${heightDelay+duration}s`};
-      return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s, ${heightDelay+duration}s`};
+      return {transitionDelay: `${transformDelay}s, ${heightDelay}s, ${heightDelay}s, ${heightDelay+duration}s, ${heightDelay}s`};
     }
     else if (switching) {
       if (el === 'main-links-container' || el === 'nav') return {};
@@ -268,23 +268,20 @@ class App extends PureComponent {
         if (page === activePage) return {transitionDelay: `${duration}s, ${duration}s`};
         else return {transitionDelay: `0s, ${duration}s`}
       }
-      if (el === activePage) {
-        return {transitionDelay: `${duration}s, ${duration}s, ${duration}s, ${duration}s`};
-      }
-      else {
-        return {transitionDelay: `0s, ${duration}s, ${duration}s, ${duration}s`};
-      }
+      if (el === activePage) return {transitionDelay: `${duration}s`};
+      else return {transitionDelay: `${duration}s, ${duration}s, ${duration}s, ${duration}s, 0s`};
     }
     else {
       if (el === 'main-links-container') return {transitionDelay: `${duration}s`};
       if (el === 'page') return {transitionDelay: `0s, ${duration}s`};
       if (el === 'nav') return {transitionDelay: `0s, ${duration}s`};
-      return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s, 0s`};
+      return {transitionDelay: `${flippedTransformDelay+2*duration}s, ${duration}s, ${duration}s, 0s, 0s`};
     }
   }
 
   render() {
-    const {activePage} = this.state;
+    const {activePage, lastActivePage} = this.state;
+    const switching = activePage && lastActivePage;
     return (
       <div className={`page-container ${activePage ? 'page-active' : ''}`}>
 
@@ -298,7 +295,7 @@ class App extends PureComponent {
         </header>
 
         <nav
-          className={`main-links ${activePage ? 'page-active' : ''}`}
+          className={`main-links ${activePage ? 'page-active' : ''} ${switching ? 'switching' : ''}`}
           style={this.transitionDelay('main-links-container')}
         >
           {PAGES.map(this.mainLink)}
