@@ -82,6 +82,11 @@ class App extends PureComponent {
         className={`nav-link nav-link-animation ${PAGE_COLORS[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''}`}
       >
         <span>{page}</span>
+        <div className="drape-wrap">
+          <div className="drape">
+            <span>{page}</span>
+          </div>
+        </div>
       </Link>
     );
   }
@@ -312,6 +317,11 @@ class App extends PureComponent {
             className={`nav-link nav-link-animation blue`}
           >
             <span>Home</span>
+            <div className="drape-wrap">
+              <div className="drape">
+                <span>Home</span>
+              </div>
+            </div>
           </Link>
           {PAGES.map(this.navLink)}
         </nav>
