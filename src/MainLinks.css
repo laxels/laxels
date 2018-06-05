@@ -131,7 +131,7 @@
     transform: scale(1);
   }
 }
-.main-links .main-link.about-link:hover span {
+.main-links .main-link.about-link:hover:not(.unhover) span {
   animation: pulse 1.8s infinite;
 }
 .main-links .main-link .bars {
@@ -147,7 +147,8 @@
   background: #F0C419;
   transition: margin-left .4s, margin-right .4s;
 }
-.main-links .main-link:not(:hover) .bars .bar {
+.main-links .main-link:not(:hover) .bars .bar,
+.main-links .main-link.unhover .bars .bar {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }

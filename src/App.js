@@ -86,9 +86,9 @@ class App extends PureComponent {
 
   render() {
     const {transitionDelayFn} = this;
-    const {pages, pageColors} = this.props;
+    const {pages, pageColors, history} = this.props;
     const {activePage, lastActivePage} = this.state;
-    const passProps = {activePage, lastActivePage, pages, pageColors, transitionDelayFn};
+    const passProps = {activePage, lastActivePage, pages, pageColors, transitionDelayFn, history};
     return (
       <div className={`page-container ${activePage ? 'page-active' : ''}`}>
 

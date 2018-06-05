@@ -111,7 +111,7 @@
     transition: width .6s;
     width: 15px;
   }
-  .nav-links .nav-link:hover .drape-wrap {
+  .nav-links .nav-link:hover:not(.unhover) .drape-wrap {
     width: 100%;
   }
   .nav-links .nav-link .drape {
@@ -130,7 +130,7 @@
     transition: height .6s;
     height: 15px;
   }
-  .nav-links .nav-link:hover .drape-wrap {
+  .nav-links .nav-link:hover:not(.unhover) .drape-wrap {
     height: 100%;
   }
   .nav-links .nav-link .drape {
