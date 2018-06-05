@@ -32,9 +32,6 @@
 .main-links .main-link.green {
   background: #85C440;
 }
-.main-links .main-link.yellow {
-  background: #F0C419;
-}
 .main-links .main-link.red {
   background: #F15A5A;
 }
@@ -46,6 +43,8 @@
 .main-links .main-link span {
   display: inline-block;
   vertical-align: middle;
+  position: relative;
+  z-index: 1;
 }
 
 .main-link-animation {
@@ -82,4 +81,73 @@
   .main-link-animation.inactive {
     top: -120px;
   }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  6.25% {
+    transform: scale(1.1);
+  }
+  12.5% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+  31.25% {
+    transform: scale(1.1);
+  }
+  37.5% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+  56.25% {
+    transform: scale(1.05);
+  }
+
+  62.5% {
+    transform: scale(1);
+  }
+  68.75% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1);
+  }
+
+  87.5% {
+    transform: scale(1);
+  }
+  93.75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.main-links .main-link.about-link:hover span {
+  animation: pulse 1.8s infinite;
+}
+.main-links .main-link .bars {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.main-links .main-link .bars .bar {
+  height: 20%;
+  background: #F0C419;
+  transition: margin-left .4s, margin-right .4s;
+}
+.main-links .main-link:not(:hover) .bars .bar {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
