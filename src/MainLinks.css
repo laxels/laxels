@@ -1,0 +1,85 @@
+.main-links {
+  position: absolute;
+  top: 170px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-size: 200%;
+  font-family: 'Aldrich';
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: transform .6s;
+}
+.main-links.page-active {
+  transform: translate3d(0, -170px, 0);
+}
+@media (max-width: 400px) {
+  .main-links {
+    top: 120px;
+  }
+  .main-links.page-active {
+    transform: translate3d(0, -120px, 0);
+  }
+}
+
+.main-links .main-link {
+  display: block;
+  position: relative;
+  height: 33.33%;
+  cursor: pointer;
+  color: white;
+}
+.main-links .main-link.green {
+  background: #85C440;
+}
+.main-links .main-link.yellow {
+  background: #F0C419;
+}
+.main-links .main-link.red {
+  background: #F15A5A;
+}
+.main-links .main-link:before {
+  content: '';
+  height: 100%;
+}
+.main-links .main-link:before,
+.main-links .main-link span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.main-link-animation {
+  transition: transform .6s ease-out, height .6s, font-size .6s, margin-left .6s, top .6s;
+  transform: translate3d(0, 0, 0);
+  top: 0;
+}
+.main-link-animation.switching {
+  transition-duration: 0s, 0s, 0s, 0s, .6s;
+}
+.main-link-animation.active {
+  font-size: 200%;
+  height: 170px;
+}
+@media (min-width: 901px) {
+  .main-link-animation.active {
+    margin-left: 65px;
+  }
+}
+@media (max-width: 400px) {
+  .main-link-animation.active {
+    font-size: 135%;
+    height: 120px;
+  }
+}
+.main-link-animation.inactive {
+  top: -170px;
+  transform: translate3d(-100%, 0, 0);
+}
+.main-link-animation.inactive:not(.page-header) {
+  height: 0;
+}
+@media (max-width: 400px) {
+  .main-link-animation.inactive {
+    top: -120px;
+  }
+}
