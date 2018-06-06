@@ -28,8 +28,10 @@
   display: block;
   position: relative;
   height: 33.33%;
-  cursor: pointer;
   color: white;
+}
+.main-links .main-link:not(.active) {
+  cursor: pointer;
 }
 .main-links .main-link.green {
   background: #85C440;
