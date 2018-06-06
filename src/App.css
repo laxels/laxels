@@ -35,9 +35,13 @@ body {
     padding-bottom: 65px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .page-container {
     padding-top: 120px;
+  }
+}
+@media (max-width: 400px) {
+  .page-container {
     padding-bottom: 50px;
   }
 }
@@ -75,7 +79,7 @@ p {
   background: #2D95BF;
   z-index: 1;
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .page-header {
     height: 120px;
   }
@@ -91,7 +95,7 @@ p {
   right: 0;
   margin: auto;
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .page-header .profile {
     height: 110px;
     width: 110px;

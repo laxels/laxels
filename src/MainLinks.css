@@ -15,7 +15,7 @@
 .main-links.page-active {
   transform: translate3d(0, -170px, 0);
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .main-links {
     top: 120px;
   }
@@ -68,10 +68,15 @@
     margin-left: 65px;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .main-link-animation.active {
     font-size: 135%;
     height: 120px;
+  }
+}
+@media (max-width: 330px) {
+  .main-link-animation.active {
+    font-size: 125%;
   }
 }
 .main-link-animation.inactive {
@@ -81,10 +86,116 @@
 .main-link-animation.inactive:not(.page-header) {
   height: 0;
 }
-@media (max-width: 400px) {
+@media (max-width: 540px) {
   .main-link-animation.inactive {
     top: -120px;
   }
+}
+
+
+.main-links .main-link .bg-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.main-links .main-link .left-bg,
+.main-links .main-link .right-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: white;
+}
+.main-links .main-link .left-bg {
+  left: 0;
+}
+.main-links .main-link .right-bg {
+  right: 0;
+}
+
+.main-links .main-link .shifting-sq {
+  background: #85C440;
+  position: absolute;
+  width: 50%;
+  height: 25%;
+}
+.main-links .main-link .shifting-sq.moving {
+  transition: all .5s;
+}
+.main-links .main-link .shifting-sq:nth-child(1) {
+  top: 0;
+  right: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(2),
+.main-links .main-link .shifting-sq:nth-child(9) {
+  top: 25%;
+  right: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(3) {
+  top: 50%;
+  right: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(4),
+.main-links .main-link .shifting-sq:nth-child(10) {
+  top: 75%;
+  right: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(5) {
+  top: 75%;
+  left: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(6),
+.main-links .main-link .shifting-sq:nth-child(11) {
+  top: 50%;
+  left: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(7) {
+  top: 25%;
+  left: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(8),
+.main-links .main-link .shifting-sq:nth-child(12) {
+  top: 0;
+  left: 0;
+}
+.main-links .main-link .shifting-sq:nth-child(9),
+.main-links .main-link .shifting-sq:nth-child(10),
+.main-links .main-link .shifting-sq:nth-child(11),
+.main-links .main-link .shifting-sq:nth-child(12) {
+  transform: scale(0);
+}
+.main-links .main-link .shifting-sq.moving:nth-child(1),
+.main-links .main-link .shifting-sq.moving:nth-child(3),
+.main-links .main-link .shifting-sq.moving:nth-child(5),
+.main-links .main-link .shifting-sq.moving:nth-child(7) {
+  transform: scale(0);
+}
+.main-links .main-link .shifting-sq.moving:nth-child(2) {
+  top: 50%;
+  transition-delay: .5s;
+}
+.main-links .main-link .shifting-sq.moving:nth-child(4) {
+  right: 50%;
+  transition-delay: .5s;
+}
+.main-links .main-link .shifting-sq.moving:nth-child(6) {
+  top: 25%;
+  transition-delay: .5s;
+}
+.main-links .main-link .shifting-sq.moving:nth-child(8) {
+  left: 50%;
+  transition-delay: .5s;
+}
+.main-links .main-link .shifting-sq.moving:nth-child(9),
+.main-links .main-link .shifting-sq.moving:nth-child(10),
+.main-links .main-link .shifting-sq.moving:nth-child(11),
+.main-links .main-link .shifting-sq.moving:nth-child(12) {
+  transform: scale(1);
+  transition-delay: 1s;
 }
 
 

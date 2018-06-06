@@ -10,6 +10,7 @@ class MainLinks extends PureComponent {
     const getRandomPos = () => ({topPercent: getRandomInt(), leftPercent: getRandomInt()});
     const dots = [...Array(5).keys()].map(getRandomPos);
     this.state = {radarPulses: [], dots: dots};
+    this.bgRef = React.createRef();
     this._flashingDots = {};
   }
 
@@ -37,7 +38,48 @@ class MainLinks extends PureComponent {
     );
   }
 
-  projectsAnimation = () => null;
+  move = () => {
+    if (this.state.moving || this.state.stopMoving) return;
+    this.setState({moving: true}, () => {
+      setTimeout(() => {
+        this.setState({moving: false}, () => {
+          setTimeout(this.move);
+        });
+      }, 1500);
+    });
+  }
+  startMovement = () => {
+    this.setState({stopMoving: false}, this.move);
+  }
+  stopMovement = () => {
+    this.setState({stopMoving: true});
+  }
+  projectsAnimation = () => {
+    const bgWrap = this.bgRef.current;
+    if (!bgWrap) return <div className="bg-wrap" ref={this.bgRef}/>;
+
+    const {moving} = this.state;
+    const {height} = bgWrap.getBoundingClientRect();
+    const generateSq = i => {
+      return <div key={i} className={`shifting-sq ${moving ? 'moving' : ''}`}/>;
+    }
+
+    return (
+      <div
+        className="bg-wrap"
+        ref={this.bgRef}
+        onMouseEnter={this.startMovement}
+        onMouseLeave={this.stopMovement}
+      >
+        <div className="left-bg" style={{width: height/2}}>
+          {[...Array(12).keys()].map(generateSq)}
+        </div>
+        <div className="right-bg" style={{width: height/2}}>
+          {[...Array(12).keys()].map(generateSq)}
+        </div>
+      </div>
+    );
+  };
 
   aboutAnimation = () => {
     const maxMargin = Math.round(window.innerWidth / 5);
@@ -66,7 +108,7 @@ class MainLinks extends PureComponent {
       x = e.clientX - gridPos.x;
       y = e.clientY - gridPos.y;
     }
-    const newPulse = {x, y};
+    const newPulse = {x, y, key: Math.random()};
 
     this.setState(prevState => {
       const newRadarPulses = [...prevState.radarPulses];
@@ -128,9 +170,9 @@ class MainLinks extends PureComponent {
       style={{left: `${leftPercent}%`, top: `${topPercent}%`}}
     />
   );
-  generatePulse = ({x, y, fading}) => (
+  generatePulse = ({x, y, key, fading}) => (
     <div
-      key={`${x},${y}`}
+      key={key}
       className={`radar-pulse ${fading ? 'fading' : ''}`}
       style={{left: `${x}px`, top: `${y}px`}}
     />
