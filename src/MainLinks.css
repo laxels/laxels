@@ -10,6 +10,7 @@
   text-transform: uppercase;
   transition: transform .6s;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .main-links.page-active {
   transform: translate3d(0, -170px, 0);

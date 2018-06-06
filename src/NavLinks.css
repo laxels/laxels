@@ -8,6 +8,7 @@
   z-index: 1;
   transition: transform .6s, visibility 0s;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 @media (max-width: 900px) {
   .nav-links {
