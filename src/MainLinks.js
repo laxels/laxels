@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { withTouchHover } from './Utils';
 import './MainLinks.css';
 
 class MainLinks extends PureComponent {
@@ -11,49 +12,18 @@ class MainLinks extends PureComponent {
     setInterval(() => this.setState({x: Math.random()}), 200);
   }
 
-  handleClick = (page) => {
-    return e => {
-      const {activePage, history} = this.props;
-      if (activePage !== page) history.push(`/${page}`);
-    }
-  }
-
-  handleTouchStart = (page) => {
-    return e => {
-      this.setState(prevState => {
-        const newState = {lastTouch: {[page]: Date.now()}};
-        if (prevState.unhovered === page) newState.unhovered = undefined;
-        return newState;
-      });
-    }
-  }
-
-  handleTouchEnd = (page) => {
-    return e => {
-      const lastTouch = this.state.lastTouch[page];
-      const now = Date.now();
-      if (lastTouch && now - lastTouch < 1000) {
-        setTimeout(() => {
-          this.setState({unhovered: page});
-        }, 1000 - (now - lastTouch));
-      }
-      else this.setState({unhovered: page});
-    }
-  }
-
   generateMainLink = (page) => {
-    const {activePage, lastActivePage, pageColors, transitionDelayFn} = this.props;
-    const {unhovered} = this.state;
+    const {activePage, lastActivePage, pageColors, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
     const active = activePage === page;
     const inactive = !active && activePage;
     const switching = activePage && lastActivePage;
     return (
       <div
         key={page}
-        className={`main-link main-link-animation ${page}-link ${pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''} ${unhovered === page ? 'unhover' : ''}`}
-        onClick={this.handleClick(page)}
-        onTouchStart={this.handleTouchStart(page)}
-        onTouchEnd={this.handleTouchEnd(page)}
+        className={`main-link main-link-animation ${page}-link ${pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''} ${unhovered === `main-${page}` ? 'unhover' : ''}`}
+        onClick={handleClick(page)}
+        onTouchStart={handleTouchStart(`main-${page}`)}
+        onTouchEnd={handleTouchEnd(`main-${page}`)}
         style={transitionDelayFn(page)}
       >
         <span>{page}</span>
@@ -76,7 +46,17 @@ class MainLinks extends PureComponent {
     );
   }
 
-  contactAnimation = () => null;
+  getRandomInt = () => Math.floor(Math.random() * 101);
+  randomPos = () => ({top: `${this.getRandomInt()}%`, left: `${this.getRandomInt()}%`});
+  generateDot = (i) => <div key={i} className="dot" style={this.randomPos()}/>;
+  dots = [...Array(5).keys()].map(this.generateDot);
+  contactAnimation = () => {
+    return (
+      <div className="radar-grid">
+        {this.dots}
+      </div>
+    );
+  }
 
   render() {
     const {pages, activePage, lastActivePage, transitionDelayFn} = this.props;
@@ -92,4 +72,4 @@ class MainLinks extends PureComponent {
   }
 }
 
-export default MainLinks;
+export default withTouchHover(MainLinks);

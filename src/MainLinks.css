@@ -83,6 +83,7 @@
   }
 }
 
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -134,6 +135,7 @@
 .main-links .main-link.about-link:hover:not(.unhover) span {
   animation: pulse 1.8s infinite;
 }
+
 .main-links .main-link .bars {
   position: absolute;
   top: 0;
@@ -151,4 +153,32 @@
 .main-links .main-link.unhover .bars .bar {
   margin-left: 0 !important;
   margin-right: 0 !important;
+}
+
+
+.main-links .main-link .radar-grid {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@keyframes flash {
+  50% {
+    opacity: .7;
+  }
+}
+.main-links .main-link .radar-grid .dot {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  margin-top: -5px;
+  margin-left: -5px;
+  border-radius: 50%;
+  background: white;
+  opacity: 0;
+}
+.main-links .main-link .radar-grid .dot.found {
+  animation: flash 1s;
 }
