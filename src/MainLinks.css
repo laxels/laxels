@@ -9,6 +9,7 @@
   font-weight: bold;
   text-transform: uppercase;
   transition: transform .6s;
+  user-select: none;
 }
 .main-links.page-active {
   transform: translate3d(0, -170px, 0);
