@@ -3,11 +3,6 @@ import { withTouchHover } from './Utils';
 import './NavLinks.css';
 
 class NavLinks extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   generateNavLink = (page) => {
     const {pageColors, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
     return (
@@ -29,8 +24,7 @@ class NavLinks extends PureComponent {
   }
 
   render() {
-    const {pages, activePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd} = this.props;
-    const {unhovered} = this.state;
+    const {pages, activePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
     return (
       <nav
         className={`nav-links ${activePage ? '' : 'hidden'}`}
