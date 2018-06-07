@@ -54,6 +54,20 @@ class MainLinks extends PureComponent {
   stopMovement = () => {
     this.setState({stopMoving: true});
   }
+  mouseEnter = () => {
+    if (!this._disableMouseEnter) this.startMovement();
+    else delete this._disableMouseEnter;
+  }
+  mouseLeave = () => {
+    this.stopMovement();
+  }
+  touchStart = () => {
+    this.startMovement();
+  }
+  touchEnd = () => {
+    this.stopMovement();
+    this._disableMouseEnter = true;
+  }
   projectsAnimation = () => {
     const bgWrap = this.bgRef.current;
     if (!bgWrap) return <div className="bg-wrap" ref={this.bgRef}/>;
@@ -68,8 +82,10 @@ class MainLinks extends PureComponent {
       <div
         className="bg-wrap"
         ref={this.bgRef}
-        onMouseEnter={this.startMovement}
-        onMouseLeave={this.stopMovement}
+        onMouseEnter={this.mouseEnter}
+        onMouseLeave={this.mouseLeave}
+        onTouchStart={this.touchStart}
+        onTouchEnd={this.touchEnd}
       >
         <div className="left-bg" style={{width: height/2}}>
           {[...Array(12).keys()].map(generateSq)}
