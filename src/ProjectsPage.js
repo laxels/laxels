@@ -4,10 +4,13 @@ import Page from './Page';
 
 class ProjectsPage extends PureComponent {
   render() {
+    const {activateTransition} = this.props;
     return (
       <Page page="projects" {...this.props}>
         <h2>Cool Stuff</h2>
-        <p>Gaudy Transitions (Coming soon!)</p>
+        <p>
+          <a onClick={activateTransition}>Gaudy Transitions</a>
+        </p>
         <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Battle Network Arena</a></p>
         <p><a href="https://chrome.google.com/webstore/detail/haunted-by-poyo/jcdbalpjodfkfogbhhfpldijbnnmpbpc" target="_blank" rel="noopener noreferrer">Haunted By Poyo</a></p>
 

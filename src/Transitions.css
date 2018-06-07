@@ -1,0 +1,126 @@
+.transition-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.transition-screen.finished {
+  opacity: 0;
+  transition: opacity 2s .5s;
+}
+.transition-screen:not(.active) {
+  visibility: hidden;
+}
+
+
+.transition-screen .wall {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.transition-screen .wall .bomb,
+.transition-screen .wall .boom {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  z-index: 1;
+}
+.transition-screen.active .wall .bomb,
+.transition-screen.active .wall .fuse-wrap {
+  transition: transform 1s .3s;
+}
+.transition-screen.finished .wall .bomb,
+.transition-screen.finished .wall .fuse-wrap {
+  visibility: hidden;
+}
+.transition-screen.active .wall .boom {
+  transition: opacity 1s .3s;
+}
+.transition-screen:not(.finished) .wall .boom {
+  visibility: hidden;
+}
+@keyframes shake {
+  10% {
+    transform: translate3d(6px, 5px, 0);
+  }
+  20% {
+    transform: translate3d(-1px, -12px, 0);
+  }
+  30% {
+    transform: translate3d(-3px, 8px, 0);
+  }
+  40% {
+    transform: translate3d(10px, -5px, 0);
+  }
+  50% {
+    transform: translate3d(18px, 10px, 0);
+  }
+  60% {
+    transform: translate3d(1px, 0px, 0);
+  }
+  70% {
+    transform: translate3d(19px, 11px, 0);
+  }
+  80% {
+    transform: translate3d(19px, -4px, 0);
+  }
+  90% {
+    transform: translate3d(11px, 7px, 0);
+  }
+}
+.transition-screen.finished .wall .boom {
+  animation: shake .5s;
+  opacity: 0;
+}
+
+.transition-screen .wall .fuse-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  margin: 0 auto 100px;
+  width: 12px;
+  height: 180px;
+  z-index: 1;
+}
+.transition-screen .wall .fuse {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-left: 3px solid #2B2B2A;
+  border-right: 3px solid #2B2B2A;
+  background: #CDA98A;
+}
+.transition-screen.active .wall .fuse {
+  transition: height .5s;
+}
+.transition-screen .wall .fuse:before {
+  content: '';
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -25px;
+  margin-top: -25px;
+  background: url(img/fuse-end.svg) center/100% no-repeat;
+}
+
+.transition-screen .wall .wall-piece {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  background-image: url(img/wall.jpg);
+  background-size: 300px;
+}

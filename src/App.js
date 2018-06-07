@@ -7,6 +7,7 @@ import NavLinks from './NavLinks';
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
 import ContactPage from './ContactPage';
+import Transitions from './Transitions';
 import profile from './img/profile.jpg';
 import './App.css';
 
@@ -84,11 +85,18 @@ class App extends PureComponent {
     }
   }
 
+  activateTransition = () => {
+    this.setState({transitionActive: true});
+  }
+  deactivateTransition = () => {
+    this.setState({transitionActive: false});
+  }
+
   render() {
-    const {transitionDelayFn} = this;
+    const {transitionDelayFn, activateTransition, deactivateTransition} = this;
     const {pages, pageColors, history} = this.props;
-    const {activePage, lastActivePage} = this.state;
-    const passProps = {activePage, lastActivePage, pages, pageColors, transitionDelayFn, history};
+    const {activePage, lastActivePage, transitionActive} = this.state;
+    const passProps = {activePage, lastActivePage, pages, pageColors, transitionDelayFn, history, activateTransition, deactivateTransition};
     return (
       <div className={`page-container ${activePage ? 'page-active' : ''}`}>
 
@@ -108,6 +116,8 @@ class App extends PureComponent {
         <ContactPage {...passProps}/>
 
         <NavLinks {...passProps}/>
+
+        <Transitions active={transitionActive} deactivate={deactivateTransition}/>
 
       </div>
     );
