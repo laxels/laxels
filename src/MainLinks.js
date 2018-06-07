@@ -8,7 +8,7 @@ class MainLinks extends PureComponent {
 
     const getRandomInt = () => Math.floor(Math.random() * 101);
     const getRandomPos = () => ({topPercent: getRandomInt(), leftPercent: getRandomInt()});
-    const dots = [...Array(5).keys()].map(getRandomPos);
+    const dots = [...Array(10).keys()].map(getRandomPos);
     this.state = {radarPulses: [], dots: dots};
     this.bgRef = React.createRef();
     this._flashingDots = {};
