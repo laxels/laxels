@@ -80,7 +80,7 @@ class MainLinks extends PureComponent {
 
     return (
       <div
-        className="bg-wrap"
+        className={`bg-wrap ${moving ? 'moving' : ''}`}
         ref={this.bgRef}
         onMouseEnter={this.mouseEnter}
         onMouseLeave={this.mouseLeave}
