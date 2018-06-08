@@ -85,11 +85,11 @@ class App extends PureComponent {
     }
   }
 
-  activateTransition = () => {
-    this.setState({transitionActive: true});
+  activateTransition = (name) => () => {
+    this.setState({transitionActive: name});
   }
   deactivateTransition = () => {
-    this.setState({transitionActive: false});
+    this.setState({transitionActive: undefined});
   }
 
   render() {

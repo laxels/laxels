@@ -7,48 +7,47 @@ class Transitions extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
-    this.wallRef = React.createRef();
+    this.ref = React.createRef();
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.active && state.progress === undefined) return {progress: 0};
-    if (!props.active) return {progress: undefined, finished: false};
+    if (!props.active) return {started: false, progress: undefined, finished: false};
     return null;
   }
 
-  componentDidMount() {
-    this.forceUpdate();
-  }
-
   componentDidUpdate() {
-    const {deactivate} = this.props;
-    const {progress, finished} = this.state;
+    const {active, deactivate} = this.props;
+    const {started, progress, finished} = this.state;
 
-    if (finished) {
-      if (!this._deactivateTimeout) {
-        this._deactivateTimeout = setTimeout(() => {
-          deactivate();
-          delete this._deactivateTimeout;
-          delete this._finishTimeout;
-        }, 2500);
+    if (!active) return;
+
+    if (!started) return this.setState({started: true, progress: 0});
+
+    if (!finished) {
+      if (progress !== undefined && progress < 100) {
+        const inc = Math.floor(Math.random()*40)+1;
+        setTimeout(() => this.setState({progress: Math.min(100, progress+inc)}), 500);
+      }
+      else if (!this._finishTimeout && progress === 100) {
+        this._finishTimeout = setTimeout(() => this.setState({finished: true}), 500);
       }
       return;
     }
 
-    if (progress !== undefined && progress < 100) {
-      const inc = Math.floor(Math.random()*40)+1;
-      setTimeout(() => this.setState({progress: Math.min(100, progress+inc)}), 500);
+    if (!this._deactivateTimeout) {
+      this._deactivateTimeout = setTimeout(() => {
+        deactivate();
+        delete this._deactivateTimeout;
+        delete this._finishTimeout;
+      }, 2500);
     }
-    else if (!this._finishTimeout && progress === 100) {
-      this._finishTimeout = setTimeout(() => this.setState({finished: true}), 500);
-    }
+
   }
 
   getWallPieceStyle = i => {
-    const wall = this.wallRef.current;
+    const wall = this.ref.current;
     if (!wall) return {display: 'none'};
-    const {active} = this.props;
-    const {finished} = this.state;
+    const {started, finished} = this.state;
     const style = {}, w = wall.offsetWidth, h = wall.offsetHeight, pw = w/8, ph = h/8;
 
     if ((i+1) % 8 !== 0) style.left = `${(i%8) * 12.5}%`;
@@ -60,7 +59,7 @@ class Transitions extends PureComponent {
 
     style.transition = 'transform .7s';
 
-    if (!active) {
+    if (!started) {
       let translateX = Math.ceil(w/2);
       if (i % 8 < 4) translateX *= -1;
       style.transform = `translate3d(${translateX}px, 0, 0)`;
@@ -87,31 +86,44 @@ class Transitions extends PureComponent {
   }
 
   getBombStyle = () => {
-    const wall = this.wallRef.current;
+    const wall = this.ref.current;
     if (!wall) return {display: 'none'};
-    const {active} = this.props;
+    const {started} = this.state;
     const style = {}, h = wall.offsetHeight;
 
-    if (!active) style.transform = `translate3d(0, ${-h}px, 0)`;
+    if (!started) style.transform = `translate3d(0, ${-h}px, 0)`;
 
     return style;
   }
 
   render() {
     const {active} = this.props;
-    const {progress, finished} = this.state;
+    const {started, progress, finished} = this.state;
     return (
       <div
-        className={`transition-screen ${active ? 'active' : ''} ${finished ? 'finished' : ''}`}
+        className={`transition-screen ${active ? 'active' : ''} ${started ? 'started' : ''} ${finished ? 'finished' : ''}`}
+        ref={this.ref}
       >
-        <div className="wall" ref={this.wallRef}>
-          {[...Array(64).keys()].map(this.generateWallPiece)}
-          <img className="bomb" src={bomb} alt="bomb" style={this.getBombStyle()}/>
-          <div className="fuse-wrap" style={this.getBombStyle()}>
-            <div className="fuse" style={{height: `${100 - progress}%`}}/>
+        {active === 'wall' && (
+          <div className="wall">
+            {[...Array(64).keys()].map(this.generateWallPiece)}
+            <img className="bomb" src={bomb} alt="bomb" style={this.getBombStyle()}/>
+            <div className="fuse-wrap" style={this.getBombStyle()}>
+              <div className="fuse" style={{height: `${100 - progress}%`}}/>
+            </div>
+            <img className="boom" src={boom} alt="boom"/>
           </div>
-          <img className="boom" src={boom} alt="boom"/>
-        </div>
+        )}
+
+        {active === 'puzzle' && (
+          <div className="puzzle">
+          </div>
+        )}
+
+        {active === 'vault' && (
+          <div className="vault">
+          </div>
+        )}
       </div>
     )
   }
