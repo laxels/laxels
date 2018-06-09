@@ -196,3 +196,88 @@
   text-align: center;
   z-index: 1;
 }
+
+
+.post-transition-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.post-transition-screen:not(.active) {
+  visibility: hidden;
+  transform: translate3d(0, -100%, 0);
+  transition: transform .75s 0s, visibility 0s .75s;
+}
+.post-transition-screen.active {
+  transition: visibility 0s 1s;
+}
+
+.post-transition-screen .content {
+  text-align: center;
+}
+
+.post-transition-screen .content h2 {
+  font-size: 250%;
+  color: white;
+  margin: 0;
+}
+@media (max-width: 540px) {
+  .post-transition-screen .content h2 {
+    font-size: 200%;
+  }
+}
+@media (max-width: 400px) {
+  .post-transition-screen .content h2 {
+    font-size: 160%;
+  }
+}
+
+.post-transition-screen .content .pusheen {
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  background-repeat: no-repeat;
+  margin: 40px auto 60px;
+  animation-duration: .6s;
+  animation-timing-function: step-end;
+  animation-iteration-count: infinite;
+}
+.post-transition-screen .content .pusheen.exercise {
+}
+.post-transition-screen .content .pusheen.sushi {
+}
+.post-transition-screen .content .pusheen.pizza {
+}
+.post-transition-screen .content .pusheen.ramen {
+}
+.post-transition-screen .content .pusheen.fast-food {
+}
+.post-transition-screen .content .pusheen.donut {
+}
+@keyframes pusheen-sleep {
+  0% {
+    background-position: -10px -10px;
+  }
+  25% {
+    background-position: -150px -10px;
+  }
+  50% {
+    background-position: -10px -131px;
+  }
+  75% {
+    background-position: -150px -131px;
+  }
+}
+.post-transition-screen .content .pusheen.sleep {
+  height: 101px;
+  width: 120px;
+  background-image: url(./img/pusheen/sleep.png);
+  background-size: 280px 242px;
+  animation-name: pusheen-sleep;
+}

@@ -76,9 +76,20 @@ class Transitions extends PureComponent {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.active === 'puzzle' && !state.puzzle) return {puzzle: Transitions.getScrambledPuzzle()};
-    if (!props.active) return {started: false, finished: false, progress: undefined, puzzle: undefined};
-    return null;
+    if (props.active) {
+      const stateChanges = {};
+      if (!state.postScreenActive) stateChanges.postScreenActive = true;
+      if (props.active === 'puzzle' && !state.puzzle) stateChanges.puzzle = Transitions.getScrambledPuzzle();
+      return stateChanges;
+    }
+    else {
+      return {
+        started: false,
+        finished: false,
+        progress: undefined,
+        puzzle: undefined
+      };
+    }
   }
 
   componentDidUpdate() {
@@ -336,10 +347,23 @@ class Transitions extends PureComponent {
     return {fontSize, lineHeight, paddingTop, height};
   }
 
+  getPostScreenStyle = () => {
+    /*
+    const colors = ['#85C440', '#F0C419', '#F15A5A'];
+    const backgroundColor = colors[randInt(colors.length)];
+    return {backgroundColor};
+    */
+    return {backgroundColor: '#85C440'};
+  }
+
+  deactivatePostScreen = () => {
+    this.setState({postScreenActive: false});
+  }
+
   render() {
     const {active} = this.props;
-    const {started, progress, finished} = this.state;
-    return (
+    const {started, progress, finished, postScreenActive} = this.state;
+    return (<React.Fragment>
       <div
         className={`transition-screen ${active ? 'active' : ''} ${started ? 'started' : ''} ${finished ? 'finished' : ''}`}
         style={this.getScreenStyle()}
@@ -370,7 +394,19 @@ class Transitions extends PureComponent {
           </div>
         )}
       </div>
-    )
+
+      <div
+        className={`post-transition-screen ${postScreenActive ? 'active' : ''}`}
+        style={this.getPostScreenStyle()}
+        onClick={this.deactivatePostScreen}
+      >
+        <div className="content">
+          <h2>Pusheen is currently busy</h2>
+          <div className={`pusheen sleep`}/>
+          <p>Click or tap to go back</p>
+        </div>
+      </div>
+    </React.Fragment>);
   }
 }
 
