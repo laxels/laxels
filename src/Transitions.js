@@ -137,11 +137,30 @@ class Transitions extends PureComponent {
           deactivate();
           delete this._deactivateTimeout;
           delete this._finishTimeout;
-        }, 650);
+        }, 700);
       }
     }
 
     else if (active === 'vault') {
+      if (!started) return this.setState({started: true, progress: 0});
+
+      const {progress} = this.state;
+      if (!finished) {
+        if (progress !== undefined && progress < 100) {
+          setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress+1)})), 20);
+        }
+        else if (progress === 100) {
+          this.setState({finished: true});
+        }
+        return;
+      }
+
+      if (!this._deactivateTimeout) {
+        this._deactivateTimeout = setTimeout(() => {
+          deactivate();
+          delete this._deactivateTimeout;
+        }, 1000);
+      }
     }
   }
 
@@ -168,7 +187,7 @@ class Transitions extends PureComponent {
         }
         else {
           style.opacity = 0;
-          style.transition = 'opacity .5s .15s';
+          style.transition = 'opacity .5s .2s';
         }
       }
       return style;
@@ -297,6 +316,26 @@ class Transitions extends PureComponent {
     );
   }
 
+  getDoorStyle = () => {
+    const screen = this.ref.current;
+    if (!screen) return {};
+
+    const side = Math.round(Math.min(screen.offsetWidth, screen.offsetHeight) * .75);
+    return {width: side, height: side};
+  }
+  getSpanStyle = () => {
+    const screen = this.ref.current;
+    if (!screen) return {};
+
+    const side = Math.min(screen.offsetWidth, screen.offsetHeight);
+    const fs = .05 * side;
+    const fontSize = Math.round(fs);
+    const lineHeight = `${Math.round(1.25 * fs)}px`;
+    const paddingTop = Math.round(.3125 * fs);
+    const height = Math.round(1.5625 * fs);
+    return {fontSize, lineHeight, paddingTop, height};
+  }
+
   render() {
     const {active} = this.props;
     const {started, progress, finished} = this.state;
@@ -325,6 +364,9 @@ class Transitions extends PureComponent {
 
         {active === 'vault' && (
           <div className="vault">
+            <div className="door" style={this.getDoorStyle()}>
+              <span style={this.getSpanStyle()}>{`${progress}%`}</span>
+            </div>
           </div>
         )}
       </div>

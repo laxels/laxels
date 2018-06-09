@@ -153,5 +153,46 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: black;
+}
+
+.transition-screen .vault .door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.transition-screen .vault .door:before,
+.transition-screen .vault .door:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.transition-screen .vault .door:before {
+  width: 80%;
+  height: 80%;
+  background: #32444A;
+  border-radius: 50%;
+}
+.transition-screen .vault .door:after {
+  background: url(./img/vault.png) center/100% no-repeat;
+}
+
+.transition-screen .vault .door span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: white;
+  font-family: 'Aldrich';
+  font-weight: 600;
+  text-align: center;
+  z-index: 1;
 }
