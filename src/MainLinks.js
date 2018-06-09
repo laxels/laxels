@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
-import { withTouchHover } from './Utils';
+import { randInt, withTouchHover } from './Utils';
 import './MainLinks.css';
 
 class MainLinks extends PureComponent {
   constructor(props) {
     super(props);
 
-    const getRandomInt = () => Math.floor(Math.random() * 101);
-    const getRandomPos = () => ({topPercent: getRandomInt(), leftPercent: getRandomInt()});
+    const getRandomPos = () => ({topPercent: randInt(101), leftPercent: randInt(101)});
     const dots = [...Array(10).keys()].map(getRandomPos);
     this.state = {radarPulses: [], dots: dots};
     this.bgRef = React.createRef();
@@ -99,8 +98,7 @@ class MainLinks extends PureComponent {
 
   aboutAnimation = () => {
     const maxMargin = Math.round(window.innerWidth / 5);
-    const getRandomInt = () => Math.floor(Math.random() * maxMargin);
-    const randomMargins = () => ({marginLeft: `${getRandomInt()}px`, marginRight: `${getRandomInt()}px`});
+    const randomMargins = () => ({marginLeft: `${randInt(maxMargin+1)}px`, marginRight: `${randInt(maxMargin+1)}px`});
     const generateBar = (i) => <div key={i} className="bar" style={randomMargins()}/>;
     return (
       <div className="bars">

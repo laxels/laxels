@@ -14,8 +14,8 @@ class ProjectsPage extends PureComponent {
           <a onClick={activateTransition('wall')}>Exploding Wall</a>
           <br/>
           <a onClick={activateTransition('puzzle')}>Sliding Puzzle</a>
-          <br/>
-          <a onClick={activateTransition('vault')}>Vault Door</a>
+          {/*<br/>
+          <a onClick={activateTransition('vault')}>Vault Door</a>*/}
         </p>
         <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Battle Network Arena</a></p>
         <p><a href="https://chrome.google.com/webstore/detail/haunted-by-poyo/jcdbalpjodfkfogbhhfpldijbnnmpbpc" target="_blank" rel="noopener noreferrer">Haunted By Poyo</a></p>

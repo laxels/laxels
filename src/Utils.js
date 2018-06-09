@@ -1,5 +1,9 @@
 import React, { PureComponent } from 'react';
 
+
+export const randInt = i => Math.floor(Math.random()*i);
+
+
 export const withTouchHover = Component => {
   return class extends PureComponent {
     constructor(props) {

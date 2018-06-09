@@ -6,10 +6,6 @@
   right: 0;
   z-index: 100;
 }
-.transition-screen.finished {
-  opacity: 0;
-  transition: opacity 2s .5s;
-}
 .transition-screen:not(.active) {
   visibility: hidden;
 }
@@ -132,7 +128,22 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: black;
+  margin: auto;
+  background: white;
+}
+
+.transition-screen .puzzle .puzzle-sq {
+  position: absolute;
+  width: 33.3333%;
+  height: 33.3333%;
+  background-image: url(img/poyo.jpg);
+  transition: all .15s linear;
+}
+.transition-screen .puzzle .puzzle-sq.blank {
+  transform: scale(0);
+}
+.transition-screen.finished .puzzle .puzzle-sq.blank {
+  transform: none;
 }
 
 
