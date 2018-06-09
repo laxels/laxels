@@ -7,7 +7,8 @@ import './Transitions.css';
 class Transitions extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
+    const pusheenActions = ['exercise', 'sushi', 'pizza', 'ramen', 'fast-food', 'donut', 'sleep'];
+    this.state = {pusheenActions};
     this.ref = React.createRef();
   }
 
@@ -75,11 +76,15 @@ class Transitions extends PureComponent {
     return {blank, board, steps};
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.active) {
+  static getDerivedStateFromProps({active}, {postScreenActive, pusheenAction, pusheenActions, puzzle}) {
+    if (active) {
       const stateChanges = {};
-      if (!state.postScreenActive) stateChanges.postScreenActive = true;
-      if (props.active === 'puzzle' && !state.puzzle) stateChanges.puzzle = Transitions.getScrambledPuzzle();
+      if (!postScreenActive) {
+        stateChanges.postScreenActive = true;
+        stateChanges.pusheenAction = pusheenActions[0];
+        if (pusheenActions.length > 1) pusheenActions.shift();
+      }
+      if (active === 'puzzle' && !puzzle) stateChanges.puzzle = Transitions.getScrambledPuzzle();
       return stateChanges;
     }
     else {
@@ -362,7 +367,7 @@ class Transitions extends PureComponent {
 
   render() {
     const {active} = this.props;
-    const {started, progress, finished, postScreenActive} = this.state;
+    const {started, progress, finished, postScreenActive, pusheenAction} = this.state;
     return (<React.Fragment>
       <div
         className={`transition-screen ${active ? 'active' : ''} ${started ? 'started' : ''} ${finished ? 'finished' : ''}`}
@@ -401,8 +406,7 @@ class Transitions extends PureComponent {
         onClick={this.deactivatePostScreen}
       >
         <div className="content">
-          <h2>Pusheen is currently busy</h2>
-          <div className={`pusheen sleep`}/>
+          <div className={`pusheen ${pusheenAction}`}/>
           <p>Click or tap to go back</p>
         </div>
       </div>

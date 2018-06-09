@@ -223,43 +223,148 @@
   text-align: center;
 }
 
-.post-transition-screen .content h2 {
-  font-size: 250%;
-  color: white;
-  margin: 0;
-}
-@media (max-width: 540px) {
-  .post-transition-screen .content h2 {
-    font-size: 200%;
-  }
-}
-@media (max-width: 400px) {
-  .post-transition-screen .content h2 {
-    font-size: 160%;
-  }
-}
-
 .post-transition-screen .content .pusheen {
   image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   background-repeat: no-repeat;
-  margin: 40px auto 60px;
+  margin: 40px auto;
   animation-duration: .6s;
   animation-timing-function: step-end;
   animation-iteration-count: infinite;
 }
+
+@keyframes pusheen-exercise {
+  0% {
+    background-position: -10px -10px;
+  }
+  25% {
+    background-position: -150px -10px;
+  }
+  50% {
+    background-position: -10px -135px;
+  }
+  75% {
+    background-position: -150px -135px;
+  }
+}
 .post-transition-screen .content .pusheen.exercise {
+  height: 105px;
+  width: 120px;
+  background-image: url(./img/pusheen/exercise.png);
+  background-size: 280px 250px;
+  animation-name: pusheen-exercise;
+}
+
+@keyframes pusheen-sushi {
+  0% {
+    background-position: -10px -10px;
+  }
+  25% {
+    background-position: -137px -10px;
+  }
+  50% {
+    background-position: -10px -150px;
+  }
+  75% {
+    background-position: -137px -150px;
+  }
 }
 .post-transition-screen .content .pusheen.sushi {
+  height: 120px;
+  width: 107px;
+  background-image: url(./img/pusheen/sushi.png);
+  background-size: 254px 280px;
+  animation-name: pusheen-sushi;
+}
+
+@keyframes pusheen-pizza {
+  0% {
+    background-position: -6px -6px;
+  }
+  25% {
+    background-position: -138px -6px;
+  }
+  50% {
+    background-position: -6px -82px;
+  }
+  75% {
+    background-position: -138px -82px;
+  }
 }
 .post-transition-screen .content .pusheen.pizza {
+  height: 64px;
+  width: 120px;
+  background-image: url(./img/pusheen/pizza.png);
+  background-size: 264px 152px;
+  animation-name: pusheen-pizza;
+}
+
+@keyframes pusheen-ramen {
+  0% {
+    background-position: -11px -11px;
+  }
+  25% {
+    background-position: -153px -11px;
+  }
+  50% {
+    background-position: -11px -152px;
+  }
+  75% {
+    background-position: -153px -152px;
+  }
 }
 .post-transition-screen .content .pusheen.ramen {
+  height: 119px;
+  width: 120px;
+  background-image: url(./img/pusheen/ramen.png);
+  background-size: 284px 282px;
+  animation-name: pusheen-ramen;
+}
+
+@keyframes pusheen-fast-food {
+  0% {
+    background-position: -9px -9px;
+  }
+  25% {
+    background-position: -147px -9px;
+  }
+  50% {
+    background-position: -9px -121px;
+  }
+  75% {
+    background-position: -147px -121px;
+  }
 }
 .post-transition-screen .content .pusheen.fast-food {
+  height: 94px;
+  width: 120px;
+  background-image: url(./img/pusheen/fast-food.png);
+  background-size: 276px 224px;
+  animation-name: pusheen-fast-food;
+}
+
+@keyframes pusheen-donut {
+  0% {
+    background-position: -11px -11px;
+  }
+  25% {
+    background-position: -153px -11px;
+  }
+  50% {
+    background-position: -11px -145px;
+  }
+  75% {
+    background-position: -153px -145px;
+  }
 }
 .post-transition-screen .content .pusheen.donut {
+  height: 112px;
+  width: 120px;
+  background-image: url(./img/pusheen/donut.png);
+  background-size: 284px 268px;
+  animation-name: pusheen-donut;
 }
+
 @keyframes pusheen-sleep {
   0% {
     background-position: -10px -10px;
