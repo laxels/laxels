@@ -52,12 +52,12 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: #85C440;
+  color: #4AD6B3;
 }
 
 h2 {
-  color: #F15A5A;
-  margin: 1em 0 .7em;
+  font-family: 'Aldrich';
+  margin: 1em 0 .5em;
   font-size: 200%;
   font-weight: 400;
 }
@@ -69,6 +69,7 @@ h2 {
 
 p {
   line-height: 1.5;
+  margin: .7em 0;
 }
 .page > p:first-child {
   margin-top: 2em;

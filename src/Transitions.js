@@ -76,11 +76,19 @@ class Transitions extends PureComponent {
     return {blank, board, steps};
   }
 
+  static postScreenColors = [
+    '#2D95BF',
+    '#F49F5A',
+    '#4AD6B3',
+    '#8B78E2'
+  ];
+
   static getDerivedStateFromProps({active}, {postScreenActive, pusheenAction, pusheenActions, puzzle}) {
     if (active) {
       const stateChanges = {};
       if (!postScreenActive) {
         stateChanges.postScreenActive = true;
+        stateChanges.postScreenColor = Transitions.postScreenColors[randInt(Transitions.postScreenColors.length)];
         stateChanges.pusheenAction = pusheenActions[0];
         if (pusheenActions.length > 1) pusheenActions.shift();
       }
@@ -352,22 +360,13 @@ class Transitions extends PureComponent {
     return {fontSize, lineHeight, paddingTop, height};
   }
 
-  getPostScreenStyle = () => {
-    /*
-    const colors = ['#85C440', '#F0C419', '#F15A5A'];
-    const backgroundColor = colors[randInt(colors.length)];
-    return {backgroundColor};
-    */
-    return {backgroundColor: '#85C440'};
-  }
-
   deactivatePostScreen = () => {
     this.setState({postScreenActive: false});
   }
 
   render() {
     const {active} = this.props;
-    const {started, progress, finished, postScreenActive, pusheenAction} = this.state;
+    const {started, progress, finished, postScreenActive, postScreenColor, pusheenAction} = this.state;
     return (<React.Fragment>
       <div
         className={`transition-screen ${active ? 'active' : ''} ${started ? 'started' : ''} ${finished ? 'finished' : ''}`}
@@ -402,7 +401,7 @@ class Transitions extends PureComponent {
 
       <div
         className={`post-transition-screen ${postScreenActive ? 'active' : ''}`}
-        style={this.getPostScreenStyle()}
+        style={{backgroundColor: postScreenColor}}
         onClick={this.deactivatePostScreen}
       >
         <div className="content">

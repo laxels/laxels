@@ -4,11 +4,11 @@ import './NavLinks.css';
 
 class NavLinks extends PureComponent {
   generateNavLink = (page) => {
-    const {pageColors, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
+    const {handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
     return (
       <div
         key={page}
-        className={`nav-link nav-link-animation ${pageColors[page]} ${unhovered === `nav-${page}` ? 'unhover' : ''}`}
+        className={`nav-link nav-link-animation ${unhovered === `nav-${page}` ? 'unhover' : ''}`}
         onClick={handleClick(page)}
         onTouchStart={handleTouchStart(`nav-${page}`)}
         onTouchEnd={handleTouchEnd(`nav-${page}`)}

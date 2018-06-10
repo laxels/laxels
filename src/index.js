@@ -10,15 +10,9 @@ const pages = [
   'contact'
 ];
 
-const pageColors = {
-  projects: 'green',
-  about: 'yellow',
-  contact: 'red'
-};
-
 ReactDOM.render((
   <BrowserRouter>
-    <App pages={pages} pageColors={pageColors}/>
+    <App pages={pages}/>
   </BrowserRouter>
 ), document.getElementById('root'));
 

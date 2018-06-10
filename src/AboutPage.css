@@ -1,3 +1,7 @@
+.about-page h2 {
+  color: #4AD6B3;
+}
+
 .about-page .social-media {
   display: inline-block;
   vertical-align: top;
@@ -19,6 +23,7 @@
 .about-page .timeline {
   position: relative;
   padding: 80px 0;
+  margin-bottom: 40px;
   height: 174px;
 }
 @media (max-width: 740px) {

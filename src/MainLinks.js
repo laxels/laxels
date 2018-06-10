@@ -18,14 +18,14 @@ class MainLinks extends PureComponent {
   }
 
   generateMainLink = (page) => {
-    const {activePage, lastActivePage, pageColors, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
+    const {activePage, lastActivePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
     const active = activePage === page;
     const inactive = !active && activePage;
     const switching = activePage && lastActivePage;
     return (
       <div
         key={page}
-        className={`main-link main-link-animation ${page}-link ${pageColors[page]} ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''} ${unhovered === `main-${page}` ? 'unhover' : ''}`}
+        className={`main-link main-link-animation ${page}-link ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''} ${unhovered === `main-${page}` ? 'unhover' : ''}`}
         onClick={handleClick(page)}
         onTouchStart={handleTouchStart(`main-${page}`)}
         onTouchEnd={handleTouchEnd(`main-${page}`)}

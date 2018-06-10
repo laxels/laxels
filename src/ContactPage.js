@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Page from './Page';
+import './ContactPage.css';
 
 
 class ContactPage extends PureComponent {

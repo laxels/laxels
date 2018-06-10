@@ -33,12 +33,6 @@
 .main-links .main-link:not(.active) {
   cursor: pointer;
 }
-.main-links .main-link.green {
-  background: #85C440;
-}
-.main-links .main-link.red {
-  background: #F15A5A;
-}
 .main-links .main-link:before {
   content: '';
   height: 100%;
@@ -93,6 +87,10 @@
 }
 
 
+.main-links .main-link.projects-link {
+  background: #F49F5A;
+}
+
 .main-links .main-link .bg-wrap {
   position: absolute;
   top: 0;
@@ -121,7 +119,7 @@
 }
 
 .main-links .main-link .shifting-sq {
-  background: #85C440;
+  background: #F49F5A;
   position: absolute;
   width: 50%;
   height: 25%;
@@ -285,13 +283,13 @@
 }
 .main-links .main-link:not(:hover) .bars,
 .main-links .main-link.unhover .bars {
-  background: #F0C419;
+  background: #4AD6B3;
   transition: background 0s .4s;
 }
 
 .main-links .main-link .bars .bar {
   height: 20%;
-  background: #F0C419;
+  background: #4AD6B3;
   transition: margin-left .4s, margin-right .4s;
 }
 .main-links .main-link:not(:hover) .bars .bar,
@@ -300,6 +298,10 @@
   margin-right: 0 !important;
 }
 
+
+.main-links .main-link.contact-link {
+  background: #8B78E2;
+}
 
 .main-links .main-link .radar-grid {
   position: absolute;
