@@ -79,8 +79,8 @@ class Transitions extends PureComponent {
   static postScreenColors = [
     '#2D95BF',
     '#F49F5A',
-    '#4AD6B3',
-    '#8B78E2'
+    '#8B78E2',
+    '#4AD6B3'
   ];
 
   static getDerivedStateFromProps({active}, {postScreenActive, pusheenAction, pusheenActions, puzzle}) {

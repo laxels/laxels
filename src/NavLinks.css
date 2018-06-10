@@ -166,14 +166,14 @@
   background: #F49F5A;
 }
 .nav-links .nav-link:nth-child(3) {
-  color: #4AD6B3;
-}
-.nav-links .nav-link:nth-child(3) .drape {
-  background: #4AD6B3;
-}
-.nav-links .nav-link:nth-child(4) {
   color: #8B78E2;
 }
-.nav-links .nav-link:nth-child(4) .drape {
+.nav-links .nav-link:nth-child(3) .drape {
   background: #8B78E2;
+}
+.nav-links .nav-link:nth-child(4) {
+  color: #4AD6B3;
+}
+.nav-links .nav-link:nth-child(4) .drape {
+  background: #4AD6B3;
 }

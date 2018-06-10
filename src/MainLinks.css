@@ -283,13 +283,13 @@
 }
 .main-links .main-link:not(:hover) .bars,
 .main-links .main-link.unhover .bars {
-  background: #4AD6B3;
+  background: #8B78E2;
   transition: background 0s .4s;
 }
 
 .main-links .main-link .bars .bar {
   height: 20%;
-  background: #4AD6B3;
+  background: #8B78E2;
   transition: margin-left .4s, margin-right .4s;
 }
 .main-links .main-link:not(:hover) .bars .bar,
@@ -300,7 +300,7 @@
 
 
 .main-links .main-link.contact-link {
-  background: #8B78E2;
+  background: #4AD6B3;
 }
 
 .main-links .main-link .radar-grid {
