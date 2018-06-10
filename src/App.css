@@ -57,7 +57,7 @@ a:hover {
 
 h2 {
   font-family: 'Aldrich';
-  margin: 1em 0 .5em;
+  margin: 1.25em 0 .5em;
   font-size: 200%;
   font-weight: 400;
 }
@@ -71,7 +71,7 @@ p {
   line-height: 1.5;
   margin: .7em 0;
 }
-.page > p:first-child {
+.page-content > p:first-child {
   margin-top: 2em;
 }
 
