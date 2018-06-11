@@ -185,13 +185,13 @@
   margin: auto;
   transition: opacity .5s ease .65s, transform .75s linear .65s;
 }
+.transition-screen.finished .vault .door {
+  transition: opacity .5s ease .25s, transform .75s linear 0s;
+}
 .transition-screen:not(.started) .vault .door,
 .transition-screen.finished .vault .door {
   opacity: 0;
   transform: translateX(104.72%) rotateZ(120deg);
-}
-.transition-screen.finished .vault .door {
-  transition: opacity .5s ease .25s, transform .75s linear 0s;
 }
 .transition-screen .vault .door:before,
 .transition-screen .vault .door:after {
