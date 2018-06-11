@@ -162,7 +162,7 @@
 .transition-screen:not(.started) .vault,
 .transition-screen.finished .vault {
   opacity: 0;
-  transform: scale(1.25);
+  transform: scale(1.5);
 }
 
 .transition-screen .vault .bg {
@@ -252,7 +252,7 @@
   transition: transform .75s linear .5s, visibility 0s ease 2s;
 }
 .transition-screen:not(.finished) + .post-transition-screen.vault-transition {
-  transform: scale(.8);
+  transform: scale(.66667);
 }
 
 .post-transition-screen .content {
