@@ -25,6 +25,11 @@ body {
   position: relative;
   padding-top: 170px;
   padding-bottom: 20px;
+  overflow: hidden;
+  transition: transform .75s linear .4s;
+}
+.page-container.vault-transition {
+  transform: scale(.8);
 }
 @media (min-width: 901px) {
   .page-container {

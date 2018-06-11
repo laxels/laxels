@@ -183,7 +183,7 @@ class Transitions extends PureComponent {
         this._deactivateTimeout = setTimeout(() => {
           deactivate();
           delete this._deactivateTimeout;
-        }, 1000);
+        }, 1750);
       }
     }
   }
@@ -340,6 +340,13 @@ class Transitions extends PureComponent {
     );
   }
 
+  getVaultBGStyle = () => {
+    const screen = this.ref.current;
+    if (!screen) return {};
+
+    const side = Math.round(Math.min(screen.offsetWidth, screen.offsetHeight) * .6);
+    return {width: side, height: side};
+  }
   getDoorStyle = () => {
     const screen = this.ref.current;
     if (!screen) return {};
@@ -392,6 +399,7 @@ class Transitions extends PureComponent {
 
         {active === 'vault' && (
           <div className="vault">
+            <div className="bg" style={this.getVaultBGStyle()}/>
             <div className="door" style={this.getDoorStyle()}>
               <span style={this.getSpanStyle()}>{`${progress}%`}</span>
             </div>
@@ -400,7 +408,7 @@ class Transitions extends PureComponent {
       </div>
 
       <div
-        className={`post-transition-screen ${postScreenActive ? 'active' : ''}`}
+        className={`post-transition-screen ${active === 'vault' ? 'vault-transition' : ''} ${postScreenActive ? 'active' : ''}`}
         style={{backgroundColor: postScreenColor}}
         onClick={this.deactivatePostScreen}
       >

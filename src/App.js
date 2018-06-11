@@ -98,28 +98,32 @@ class App extends PureComponent {
     const {activePage, lastActivePage, transitionActive} = this.state;
     const passProps = {activePage, lastActivePage, pages, transitionDelayFn, history, activateTransition, deactivateTransition};
     return (
-      <div className={`page-container ${activePage ? 'page-active' : ''}`}>
+      <React.Fragment>
 
-        <header
-          className={`page-header main-link-animation ${activePage ? 'inactive' : ''}`}
-          style={this.transitionDelayFn('header')}
-        >
-          <a className="profile" href="//www.facebook.com/laxels" target="_blank" rel="noopener noreferrer">
-            <img src={profile} alt="Profile"/>
-          </a>
-        </header>
+        <div className={`page-container ${activePage ? 'page-active' : ''} ${transitionActive === 'vault' ? 'vault-transition' : ''}`}>
 
-        <MainLinks {...passProps}/>
+          <header
+            className={`page-header main-link-animation ${activePage ? 'inactive' : ''}`}
+            style={this.transitionDelayFn('header')}
+          >
+            <a className="profile" href="//www.facebook.com/laxels" target="_blank" rel="noopener noreferrer">
+              <img src={profile} alt="Profile"/>
+            </a>
+          </header>
 
-        <ProjectsPage {...passProps}/>
-        <AboutPage {...passProps}/>
-        <ContactPage {...passProps}/>
+          <MainLinks {...passProps}/>
 
-        <NavLinks {...passProps}/>
+          <ProjectsPage {...passProps}/>
+          <AboutPage {...passProps}/>
+          <ContactPage {...passProps}/>
+
+          <NavLinks {...passProps}/>
+
+        </div>
 
         <Transitions active={transitionActive} deactivate={deactivateTransition}/>
 
-      </div>
+      </React.Fragment>
     );
   }
 }

@@ -153,6 +153,27 @@
   bottom: 0;
   left: 0;
   right: 0;
+  overflow: hidden;
+  transition: opacity .5s ease 0s, transform .75s linear .4s;
+}
+.transition-screen.finished .vault {
+  transition: opacity .5s ease 1.25s, transform .75s linear .5s;
+}
+.transition-screen:not(.started) .vault,
+.transition-screen.finished .vault {
+  opacity: 0;
+  transform: scale(1.25);
+}
+
+.transition-screen .vault .bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 0 9999px #32444A;
 }
 
 .transition-screen .vault .door {
@@ -162,6 +183,15 @@
   left: 0;
   right: 0;
   margin: auto;
+  transition: opacity .5s ease .65s, transform .75s linear .65s;
+}
+.transition-screen:not(.started) .vault .door,
+.transition-screen.finished .vault .door {
+  opacity: 0;
+  transform: translateX(104.72%) rotateZ(120deg);
+}
+.transition-screen.finished .vault .door {
+  transition: opacity .5s ease .25s, transform .75s linear 0s;
 }
 .transition-screen .vault .door:before,
 .transition-screen .vault .door:after {
@@ -217,6 +247,12 @@
 }
 .post-transition-screen.active {
   transition: visibility 0s 1s;
+}
+.post-transition-screen.active.vault-transition {
+  transition: transform .75s linear .5s, visibility 0s ease 2s;
+}
+.transition-screen:not(.finished) + .post-transition-screen.vault-transition {
+  transform: scale(.8);
 }
 
 .post-transition-screen .content {

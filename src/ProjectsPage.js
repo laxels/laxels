@@ -13,7 +13,7 @@ class ProjectsPage extends PureComponent {
         <p>Made with pure HTML/CSS/JS (Canvas-free!).</p>
         <p><a onClick={activateTransition('wall')}>Exploding Wall</a></p>
         <p><a onClick={activateTransition('puzzle')}>Sliding Puzzle</a></p>
-        {/*<p><a onClick={activateTransition('vault')}>Vault Door</a></p>*/}
+        <p><a onClick={activateTransition('vault')}>Vault Door</a></p>
 
         {/*
         <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Battle Network Arena</a></p>
