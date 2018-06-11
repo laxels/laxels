@@ -408,13 +408,14 @@ class Transitions extends PureComponent {
       </div>
 
       <div
-        className={`post-transition-screen ${active === 'vault' ? 'vault-transition' : ''} ${postScreenActive ? 'active' : ''}`}
-        style={{backgroundColor: postScreenColor}}
+        className={`post-transition-wrap ${active === 'vault' ? 'vault-transition' : ''} ${postScreenActive ? 'active' : ''}`}
         onClick={this.deactivatePostScreen}
       >
-        <div className="content">
-          <div className={`pusheen ${pusheenAction}`}/>
-          <p>Click or tap to go back</p>
+        <div className="post-transition-screen" style={{backgroundColor: postScreenColor}}>
+          <div className="content">
+            <div className={`pusheen ${pusheenAction}`}/>
+            <p>Click or tap to go back</p>
+          </div>
         </div>
       </div>
     </React.Fragment>);
