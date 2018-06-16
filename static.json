@@ -5,7 +5,9 @@
   },
   "headers": {
     "/**": {
-      "Cache-Control": "no-store, no-cache"
+      "Cache-Control": "no-store, no-cache",
+      "Strict-Transport-Security": "max-age=31536000"
     }
-  }
+  },
+  "https_only": true
 }
