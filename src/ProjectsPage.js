@@ -8,6 +8,19 @@ class ProjectsPage extends PureComponent {
     const {activateTransition} = this.props;
     return (
       <Page page="projects" {...this.props}>
+        <h2>Websites</h2>
+        <div className="websites">
+          <a className="website crowdmed" href="https://www.crowdmed.com/" target="_blank" rel="noopener noreferrer">
+            <span>CrowdMed</span>
+          </a>
+          <a className="website gawpoe" href="https://www.gawpoe.com/" target="_blank" rel="noopener noreferrer">
+            <span>Gaw | Poe LLP</span>
+          </a>
+          <a className="website buypower" href="https://www.buypower.ng/" target="_blank" rel="noopener noreferrer">
+            <span>BuyPower</span>
+          </a>
+        </div>
+
         <h2>Over-The-Top Transitions</h2>
         <p>You probably wouldn't use these transition animations. They were quite fun to make, though. ;)</p>
         <p>Made with pure HTML/CSS/JS (Canvas-free!).</p>
@@ -15,10 +28,10 @@ class ProjectsPage extends PureComponent {
         <p><a onClick={activateTransition('puzzle')}>Sliding Puzzle</a></p>
         <p><a onClick={activateTransition('vault')}>Vault Door</a></p>
 
-        {/*
-        <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Battle Network Arena</a></p>
-        <p><a href="https://chrome.google.com/webstore/detail/haunted-by-poyo/jcdbalpjodfkfogbhhfpldijbnnmpbpc" target="_blank" rel="noopener noreferrer">Haunted By Poyo</a></p>
-        */}
+        <h2>Battle Network Arena</h2>
+        <p>A very early-stage recreation of the battle system in Capcom's <a href="https://en.wikipedia.org/wiki/Mega_Man_Battle_Network" target="_blank" rel="noopener noreferrer">Mega Man Battle Network</a> series. Done fully in JavaScript using WebGL/Canvas. Online play planned for the distant future.</p>
+        <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Check it out here!</a> (Touch devices not yet supported)</p>
+        <p>Release date: TBD (probably after Universal Basic Income is instated)</p>
 
         {/*
         <h2>Reinventing The Wheel</h2>

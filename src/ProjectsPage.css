@@ -1,3 +1,39 @@
 .projects-page h2 {
   color: #F49F5A;
 }
+
+
+.projects-page .websites {
+  margin-top: -20px;
+}
+
+.projects-page .websites .website {
+  position: relative;
+  display: inline-block;
+  margin: 20px 20px 0 0;
+  width: 213px;
+  height: 148px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.projects-page .websites .website.crowdmed {
+  background-image: url(img/crowdmed.png);
+}
+.projects-page .websites .website.gawpoe {
+  background-image: url(img/gawpoe.png);
+}
+.projects-page .websites .website.buypower {
+  background-image: url(img/buypower.png);
+}
+
+.projects-page .websites .website span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  line-height: 40px;
+  color: white;
+  padding: 0 15px;
+}
