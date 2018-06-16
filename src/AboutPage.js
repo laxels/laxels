@@ -14,7 +14,7 @@ class AboutPage extends PureComponent {
     return (
       <Page page="about" {...this.props}>
         <p>
-          Hi there! I'm a full-stack web developer who loves making apps as fun, pretty, and bug-free as I am. :P
+          Hi there! My name is Leonardo Axel Setyanto. I'm a full-stack web developer in San Francisco who loves making apps as fun, pretty, and bug-free as I am. :P
         </p>
 
         <h2>Career Timeline</h2>

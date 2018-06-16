@@ -105,6 +105,7 @@ p {
   left: 0;
   right: 0;
   margin: auto;
+  cursor: pointer;
 }
 @media (max-width: 540px) {
   .page-header .profile {

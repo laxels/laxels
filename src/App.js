@@ -92,6 +92,12 @@ class App extends PureComponent {
     this.setState({transitionActive: undefined});
   }
 
+  activateAboutPage = () => {
+    const {history} = this.props;
+    const {activePage} = this.state;
+    if (activePage !== 'about') history.push('/about');
+  }
+
   render() {
     const {transitionDelayFn, activateTransition, deactivateTransition} = this;
     const {pages, history} = this.props;
@@ -106,9 +112,9 @@ class App extends PureComponent {
             className={`page-header main-link-animation ${activePage ? 'inactive' : ''}`}
             style={this.transitionDelayFn('header')}
           >
-            <a className="profile" href="//www.facebook.com/laxels" target="_blank" rel="noopener noreferrer">
+            <div className="profile" onClick={this.activateAboutPage}>
               <img src={profile} alt="Profile"/>
-            </a>
+            </div>
           </header>
 
           <MainLinks {...passProps}/>
