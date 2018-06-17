@@ -16,7 +16,7 @@ class ContactPage extends PureComponent {
         <p>
           <a href="tel:+17132932448">(713)-293-2448</a>
           <br/>
-          May not be consistently available
+          I'll try my best to answer, but don't get discouraged if I don't pick up. I get a lot of spam calls. :/
         </p>
       </Page>
     );
