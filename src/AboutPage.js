@@ -77,8 +77,8 @@ class AboutPage extends PureComponent {
         </div>
 
         <h2>Experience</h2>
-        <p>Front-end frameworks: React, Angular, Backbone</p>
-        <p>Back-end frameworks: Node.js (Express), Django</p>
+        <p>Front-end web frameworks: React, Angular, Backbone</p>
+        <p>Back-end web frameworks: Node.js (Express), Django</p>
         <p>Databases: PostgreSQL, MySQL, MongoDB</p>
         <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, SendGrid, Twilio, GitHub</p>
         <p>Servers: Apache, Nginx</p>
