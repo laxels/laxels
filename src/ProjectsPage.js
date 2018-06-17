@@ -16,6 +16,9 @@ class ProjectsPage extends PureComponent {
           <a className="website gawpoe" href="https://www.gawpoe.com/" target="_blank" rel="noopener noreferrer">
             <span>Gaw | Poe LLP</span>
           </a>
+          <a className="website amydis" href="https://www.amydis.com/" target="_blank" rel="noopener noreferrer">
+            <span>Amydis</span>
+          </a>
           <a className="website buypower" href="https://www.buypower.ng/" target="_blank" rel="noopener noreferrer">
             <span>BuyPower</span>
           </a>
