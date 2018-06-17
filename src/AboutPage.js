@@ -75,11 +75,12 @@ class AboutPage extends PureComponent {
 
         <h2>Experience</h2>
         <p>Front-end frameworks: React, Angular, Backbone</p>
-        <p>Back-end frameworks: Node.js, Django</p>
+        <p>Back-end frameworks: Node.js (Express), Django</p>
         <p>Databases: PostgreSQL, MySQL, MongoDB</p>
-        <p>Services: AWS, Heroku, etc.</p>
-        <p>Misc: Redis, ElasticSearch, etc.</p>
-        <p>Languages: JavaScript, Python, Java, Haskell</p>
+        <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, SendGrid, Twilio, GitHub</p>
+        <p>Servers: Apache, Nginx</p>
+        <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, C++, C, Lisp)</p>
+        <p>Misc: Redis, jQuery, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop</p>
 
         <h2>Education</h2>
         <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
