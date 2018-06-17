@@ -8,6 +8,8 @@ class ProjectsPage extends PureComponent {
     const {activateTransition} = this.props;
     return (
       <Page page="projects" {...this.props}>
+        <p>My latest project is this personal site. Done in Vanilla React without any animation libraries.</p>
+
         <h2>Websites</h2>
         <div className="websites">
           <a className="website crowdmed" href="https://www.crowdmed.com/" target="_blank" rel="noopener noreferrer">
@@ -26,7 +28,7 @@ class ProjectsPage extends PureComponent {
 
         <h2>Over-The-Top Transitions</h2>
         <p>You probably wouldn't use these transition animations. They were quite fun to make, though. ;)</p>
-        <p>Made with pure HTML/CSS/JS (Canvas-free!).</p>
+        <p>Made with pure HTML/CSS/JS (Canvas-free!) from scratch, no animation libraries used.</p>
         <p><a onClick={activateTransition('wall')}>Exploding Wall</a></p>
         <p><a onClick={activateTransition('puzzle')}>Sliding Puzzle</a></p>
         <p><a onClick={activateTransition('vault')}>Vault Door</a></p>
