@@ -16,6 +16,9 @@ class AboutPage extends PureComponent {
         <p>
           Hi there! My name is Leonardo Axel Setyanto. I'm a full-stack web developer in San Francisco who loves making apps as fun, pretty, and bug-free as I am. :P
         </p>
+        <p>
+          For those of you hiring, <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my résumé</a>. Check out <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer">my LinkedIn</a> as well!
+        </p>
 
         <h2>Career Timeline</h2>
         <p>Hover or tap on the icons for details!</p>
@@ -79,8 +82,8 @@ class AboutPage extends PureComponent {
         <p>Databases: PostgreSQL, MySQL, MongoDB</p>
         <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, SendGrid, Twilio, GitHub</p>
         <p>Servers: Apache, Nginx</p>
-        <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, C++, C, Lisp)</p>
-        <p>Misc: Redis, jQuery, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop</p>
+        <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, PHP, C++, C, Lisp)</p>
+        <p>Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop</p>
 
         <h2>Education</h2>
         <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
