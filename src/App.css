@@ -55,6 +55,7 @@ body {
 
 a {
   color: #2D95BF;
+  cursor: pointer;
   text-decoration: none;
 }
 a:hover {
