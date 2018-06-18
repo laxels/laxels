@@ -117,7 +117,7 @@ class Transitions extends PureComponent {
       const {progress} = this.state;
       if (!finished) {
         if (progress !== undefined && progress < 100) {
-          const inc = randInt(40) + 1;
+          const inc = randInt(26) + 25;
           setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress+inc)})), 500);
         }
         else if (!this._finishTimeout && progress === 100) {
