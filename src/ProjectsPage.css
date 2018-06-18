@@ -17,8 +17,14 @@
   background-repeat: no-repeat;
 }
 
+.projects-page .websites .website.britepeak {
+  background-image: url(img/britepeak.png);
+}
 .projects-page .websites .website.crowdmed {
   background-image: url(img/crowdmed.png);
+}
+.projects-page .websites .website.price {
+  background-image: url(img/price.png);
 }
 .projects-page .websites .website.gawpoe {
   background-image: url(img/gawpoe.png);

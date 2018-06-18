@@ -80,7 +80,7 @@ class AboutPage extends PureComponent {
         <p>Front-end web frameworks: React, Angular, Backbone</p>
         <p>Back-end web frameworks: Node.js (Express), Django</p>
         <p>Databases: PostgreSQL, MySQL, MongoDB</p>
-        <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, SendGrid, Twilio, GitHub</p>
+        <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, Facebook, SendGrid, Twilio, GitHub</p>
         <p>Servers: Apache, Nginx</p>
         <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, PHP, C++, C, Lisp)</p>
         <p>Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop</p>

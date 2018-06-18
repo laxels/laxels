@@ -12,8 +12,14 @@ class ProjectsPage extends PureComponent {
 
         <h2>Websites</h2>
         <div className="websites">
+          <a className="website britepeak" href="http://www.britepeak.com/" target="_blank" rel="noopener noreferrer">
+            <span>BritePeak</span>
+          </a>
           <a className="website crowdmed" href="https://www.crowdmed.com/" target="_blank" rel="noopener noreferrer">
             <span>CrowdMed</span>
+          </a>
+          <a className="website price" href="https://price.com/" target="_blank" rel="noopener noreferrer">
+            <span>Price</span>
           </a>
           <a className="website gawpoe" href="https://www.gawpoe.com/" target="_blank" rel="noopener noreferrer">
             <span>Gaw | Poe LLP</span>
