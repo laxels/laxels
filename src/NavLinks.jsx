@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { withTouchHover } from './Utils';
+import React, {PureComponent} from 'react';
+import {withTouchHover} from './Utils';
 import './NavLinks.css';
 
 class NavLinks extends PureComponent {
@@ -21,7 +21,7 @@ class NavLinks extends PureComponent {
         </div>
       </div>
     );
-  }
+  };
 
   render() {
     const {pages, activePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;

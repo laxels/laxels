@@ -1,10 +1,17 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import bomb from './img/bomb.svg';
 import boom from './img/boom.png';
-import { randInt } from './Utils';
+import {randInt} from './Utils';
 import './Transitions.css';
 
 class Transitions extends PureComponent {
+  static postScreenColors = [
+    '#2D95BF',
+    '#F49F5A',
+    '#8B78E2',
+    '#4AD6B3'
+  ];
+
   constructor(props) {
     super(props);
     const pusheenActions = ['exercise', 'sushi', 'pizza', 'ramen', 'fast-food', 'donut', 'sleep'];
@@ -30,58 +37,49 @@ class Transitions extends PureComponent {
       board[y][x] = blank;
       steps.unshift('down');
       return down;
-    }
+    };
     const down = () => {
       board[y][x] = board[++y][x];
       board[y][x] = blank;
       steps.unshift('up');
       return up;
-    }
+    };
     const left = () => {
       board[y][x] = board[y][--x];
       board[y][x] = blank;
       steps.unshift('right');
       return right;
-    }
+    };
     const right = () => {
       board[y][x] = board[y][++x];
       board[y][x] = blank;
       steps.unshift('left');
       return left;
-    }
+    };
     const execRandFn = fns => {
       const i = fns.indexOf(excludedFn);
       if (i !== -1) fns.splice(i, 1);
       const fn = fns[randInt(fns.length)];
       excludedFn = fn();
-    }
+    };
     const move = () => {
       if (x === 0) {
         if (y === 0) execRandFn([right, down]);
         else if (y === 2) execRandFn([right, up]);
         else execRandFn([right, up, down]);
-      }
-      else if (x === 2) {
+      } else if (x === 2) {
         if (y === 0) execRandFn([left, down]);
         else if (y === 2) execRandFn([left, up]);
         else execRandFn([left, up, down]);
-      }
-      else {
+      } else {
         if (y === 0) execRandFn([left, right, down]);
         else if (y === 2) execRandFn([left, right, up]);
         else execRandFn([left, right, up, down]);
       }
-    }
+    };
     [...Array(10).keys()].map(move);
     return {blank, board, steps};
   }
-
-  static postScreenColors = [
-    '#2D95BF',
-    '#F49F5A',
-    '#8B78E2',
-    '#4AD6B3'
-  ];
 
   static getDerivedStateFromProps({active}, {postScreenActive, pusheenAction, pusheenActions, puzzle}) {
     if (active) {
@@ -94,8 +92,7 @@ class Transitions extends PureComponent {
       }
       if (active === 'puzzle' && !puzzle) stateChanges.puzzle = Transitions.getScrambledPuzzle();
       return stateChanges;
-    }
-    else {
+    } else {
       return {
         started: false,
         finished: false,
@@ -118,9 +115,8 @@ class Transitions extends PureComponent {
       if (!finished) {
         if (progress !== undefined && progress < 100) {
           const inc = randInt(26) + 25;
-          setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress+inc)})), 500);
-        }
-        else if (!this._finishTimeout && progress === 100) {
+          setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress + inc)})), 500);
+        } else if (!this._finishTimeout && progress === 100) {
           this._finishTimeout = setTimeout(() => this.setState({finished: true}), 500);
         }
         return;
@@ -133,9 +129,7 @@ class Transitions extends PureComponent {
           delete this._finishTimeout;
         }, 2500);
       }
-    }
-
-    else if (active === 'puzzle') {
+    } else if (active === 'puzzle') {
       if (!started) return this.setState({started: true});
 
       const {puzzle: {steps}} = this.state;
@@ -149,8 +143,7 @@ class Transitions extends PureComponent {
             }
             return {};
           }), 150);
-        }
-        else if (!this._finishTimeout) {
+        } else if (!this._finishTimeout) {
           this._finishTimeout = setTimeout(() => this.setState({finished: true}), 150);
         }
         return;
@@ -163,17 +156,14 @@ class Transitions extends PureComponent {
           delete this._finishTimeout;
         }, 700);
       }
-    }
-
-    else if (active === 'vault') {
+    } else if (active === 'vault') {
       if (!started) return this.setState({started: true, progress: 0});
 
       const {progress} = this.state;
       if (!finished) {
         if (progress !== undefined && progress < 100) {
-          setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress+1)})), 20);
-        }
-        else if (progress === 100) {
+          setTimeout(() => this.setState(({progress}) => ({progress: Math.min(100, progress + 1)})), 20);
+        } else if (progress === 100) {
           this.setState({finished: true});
         }
         return;
@@ -204,12 +194,10 @@ class Transitions extends PureComponent {
 
       if (!started) {
         style.opacity = 0;
-      }
-      else {
+      } else {
         if (!finished) {
           style.transition = 'opacity .5s';
-        }
-        else {
+        } else {
           style.opacity = 0;
           style.transition = 'opacity .5s .2s';
         }
@@ -218,48 +206,47 @@ class Transitions extends PureComponent {
     }
 
     return {};
-  }
+  };
 
   getWallPieceStyle = i => {
     const wall = this.ref.current;
     if (!wall) return {display: 'none'};
     const {started, finished} = this.state;
-    const style = {}, w = wall.offsetWidth, h = wall.offsetHeight, pw = w/8, ph = h/8;
+    const style = {}, w = wall.offsetWidth, h = wall.offsetHeight, pw = w / 8, ph = h / 8;
 
-    if ((i+1) % 8 !== 0) style.left = `${(i%8) * 12.5}%`;
+    if ((i + 1) % 8 !== 0) style.left = `${(i % 8) * 12.5}%`;
     else style.right = 0;
-    if (i < 56) style.top = `${Math.floor(i/8) * 12.5}%`;
+    if (i < 56) style.top = `${Math.floor(i / 8) * 12.5}%`;
     else style.bottom = 0;
 
-    style.backgroundPosition = `-${Math.round((i%8)*pw)}px -${Math.round(Math.floor(i/8)*ph)}px`;
+    style.backgroundPosition = `-${Math.round((i % 8) * pw)}px -${Math.round(Math.floor(i / 8) * ph)}px`;
 
     style.transition = 'transform .7s';
 
     if (!started) {
-      let translateX = Math.ceil(w/2);
+      let translateX = Math.ceil(w / 2);
       if (i % 8 < 4) translateX *= -1;
       style.transform = `translate3d(${translateX}px, 0, 0)`;
       delete style.transition;
-    }
-    else if (finished) {
+    } else if (finished) {
       const r = m => {
         let x = Math.random() * (m || 1);
         if (Math.random() < .5) x = -x;
         return x;
-      }
-      const rotation = `rotate3d(${r()}, ${r()}, ${r()}, ${(Math.random()+1)/2}turn)`;
+      };
+      const rotation = `rotate3d(${r()}, ${r()}, ${r()}, ${(Math.random() + 1) / 2}turn)`;
       const translation = `translate3d(${r(100)}px, ${r(100)}px, ${r(100)}px)`;
       style.transform = `${rotation} ${translation}`;
       style.transition = 'transform 2s linear';
     }
 
     return style;
-  }
+  };
   generateWallPiece = i => {
     return (
       <div key={i} className="wall-piece" style={this.getWallPieceStyle(i)}/>
     );
-  }
+  };
 
   getBombStyle = () => {
     const wall = this.ref.current;
@@ -270,7 +257,7 @@ class Transitions extends PureComponent {
     if (!started) style.transform = `translate3d(0, ${-h}px, 0)`;
 
     return style;
-  }
+  };
 
   getPuzzleStyle = () => {
     const screen = this.ref.current;
@@ -278,31 +265,31 @@ class Transitions extends PureComponent {
 
     const side = Math.min(screen.offsetWidth, screen.offsetHeight);
     return {width: side, height: side};
-  }
+  };
   up = () => {
     const {puzzle: {blank, board}} = this.state;
     let {x, y} = this.getPosFromBoard(blank);
     board[y][x] = board[--y][x];
     board[y][x] = blank;
-  }
+  };
   down = () => {
     const {puzzle: {blank, board}} = this.state;
     let {x, y} = this.getPosFromBoard(blank);
     board[y][x] = board[++y][x];
     board[y][x] = blank;
-  }
+  };
   left = () => {
     const {puzzle: {blank, board}} = this.state;
     let {x, y} = this.getPosFromBoard(blank);
     board[y][x] = board[y][--x];
     board[y][x] = blank;
-  }
+  };
   right = () => {
     const {puzzle: {blank, board}} = this.state;
     let {x, y} = this.getPosFromBoard(blank);
     board[y][x] = board[y][++x];
     board[y][x] = blank;
-  }
+  };
   getPosFromBoard = i => {
     const {puzzle: {board}} = this.state;
     let x, y;
@@ -316,29 +303,29 @@ class Transitions extends PureComponent {
       return true;
     });
     return {x, y};
-  }
+  };
   getPuzzleSqStyle = i => {
     const screen = this.ref.current;
     if (!screen) return {display: 'none'};
 
     const {width, height} = this.getPuzzleStyle();
-    const style = {}, w = width, h = height, sw = w/3, sh = h/3;
+    const style = {}, w = width, h = height, sw = w / 3, sh = h / 3;
 
     const {x, y} = this.getPosFromBoard(i);
     style.left = `${x * 33.3333}%`;
     style.top = `${y * 33.3333}%`;
 
     style.backgroundSize = `${w}px ${h}px`;
-    style.backgroundPosition = `-${Math.round((i%3)*sw)}px -${Math.round(Math.floor(i/3)*sh)}px`;
+    style.backgroundPosition = `-${Math.round((i % 3) * sw)}px -${Math.round(Math.floor(i / 3) * sh)}px`;
 
     return style;
-  }
+  };
   generatePuzzleSq = i => {
     const {puzzle: {blank}} = this.state;
     return (
       <div key={i} className={`puzzle-sq ${i === blank ? 'blank' : ''}`} style={this.getPuzzleSqStyle(i)}/>
     );
-  }
+  };
 
   getVaultBGStyle = () => {
     const screen = this.ref.current;
@@ -346,14 +333,14 @@ class Transitions extends PureComponent {
 
     const side = Math.round(Math.min(screen.offsetWidth, screen.offsetHeight) * .6);
     return {width: side, height: side};
-  }
+  };
   getDoorStyle = () => {
     const screen = this.ref.current;
     if (!screen) return {};
 
     const side = Math.round(Math.min(screen.offsetWidth, screen.offsetHeight) * .75);
     return {width: side, height: side};
-  }
+  };
   getSpanStyle = () => {
     const screen = this.ref.current;
     if (!screen) return {};
@@ -365,11 +352,11 @@ class Transitions extends PureComponent {
     const paddingTop = Math.round(.3125 * fs);
     const height = Math.round(1.5625 * fs);
     return {fontSize, lineHeight, paddingTop, height};
-  }
+  };
 
   deactivatePostScreen = () => {
     this.setState({postScreenActive: false});
-  }
+  };
 
   render() {
     const {active} = this.props;

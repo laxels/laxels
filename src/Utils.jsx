@@ -1,7 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 
 
-export const randInt = i => Math.floor(Math.random()*i);
+export const randInt = i => Math.floor(Math.random() * i);
 
 
 export const withTouchHover = Component => {
@@ -17,7 +17,7 @@ export const withTouchHover = Component => {
         const {activePage, history} = this.props;
         if (activePage !== page) history.push(`/${page}`);
       }
-    }
+    };
 
     handleTouchStart = (page) => {
       return e => {
@@ -28,7 +28,7 @@ export const withTouchHover = Component => {
           return newState;
         });
       }
-    }
+    };
 
     handleTouchEnd = (page) => {
       return e => {
@@ -38,10 +38,9 @@ export const withTouchHover = Component => {
           this._unhoverTimeouts[page] = setTimeout(() => {
             this.setState({unhovered: page});
           }, 1000 - (now - lastTouch));
-        }
-        else this.setState({unhovered: page});
+        } else this.setState({unhovered: page});
       }
-    }
+    };
 
     render() {
       const {handleClick, handleTouchStart, handleTouchEnd} = this;
@@ -52,4 +51,4 @@ export const withTouchHover = Component => {
       );
     }
   }
-}
+};

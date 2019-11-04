@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import Page from './Page';
 import fbIcon from './img/fb-icon.svg';
 import liIcon from './img/li-icon.svg';
@@ -14,10 +14,13 @@ class AboutPage extends PureComponent {
     return (
       <Page page="about" {...this.props}>
         <p>
-          Hi there! My name is Leonardo Axel Setyanto. I'm a full-stack web developer in San Francisco who loves making apps as fun, pretty, and bug-free as I am. :P
+          Hi there! My name is Leonardo Axel Setyanto. I'm a full-stack web developer in San Francisco who loves making
+          apps as fun, pretty, and bug-free as I am. :P
         </p>
         <p>
-          For those of you hiring, <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my résumé</a>. Check out <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer">my LinkedIn</a> as well!
+          For those of you hiring, <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my
+          résumé</a>. Check out <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank"
+                                   rel="noopener noreferrer">my LinkedIn</a> as well!
         </p>
 
         <h2>Career Timeline</h2>
@@ -83,7 +86,8 @@ class AboutPage extends PureComponent {
         <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, Facebook, SendGrid, Twilio, GitHub</p>
         <p>Servers: Apache, Nginx</p>
         <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, PHP, C++, C, Lisp)</p>
-        <p>Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop</p>
+        <p>Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP,
+          OpenGL, FLTK, Photoshop</p>
 
         <h2>Education</h2>
         <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
@@ -105,10 +109,12 @@ class AboutPage extends PureComponent {
 
         <h2>Social Media</h2>
         <p>
-          <a href="https://www.facebook.com/laxels" target="_blank" rel="noopener noreferrer" className="social-media facebook">
+          <a href="https://www.facebook.com/laxels" target="_blank" rel="noopener noreferrer"
+             className="social-media facebook">
             <img src={fbIcon} alt="Facebook"/>
           </a>
-          <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer" className="social-media linkedin">
+          <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer"
+             className="social-media linkedin">
             <img src={liIcon} alt="LinkedIn"/>
           </a>
         </p>

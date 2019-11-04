@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import Page from './Page';
 import './ProjectsPage.css';
 
@@ -8,7 +8,8 @@ class ProjectsPage extends PureComponent {
     const {activateTransition} = this.props;
     return (
       <Page page="projects" {...this.props}>
-        <p>My latest project is this personal site, which is done in Vanilla React without any animation libraries. Try hovering over or touching the page headers / links on the home page!</p>
+        <p>My latest project is this personal site, which is done in Vanilla React without any animation libraries. Try
+          hovering over or touching the page headers / links on the home page!</p>
 
         <h2>Websites</h2>
         <div className="websites">
@@ -41,8 +42,12 @@ class ProjectsPage extends PureComponent {
         <p><a onClick={activateTransition('vault')}>Vault Door</a></p>
 
         <h2>Battle Network Arena</h2>
-        <p>A very early-stage recreation of the battle system in Capcom's <a href="https://en.wikipedia.org/wiki/Mega_Man_Battle_Network" target="_blank" rel="noopener noreferrer">Mega Man Battle Network</a> series. Done fully in JavaScript using WebGL/Canvas. Online play planned for the distant future.</p>
-        <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Check it out here!</a> (Touch devices not yet supported)</p>
+        <p>A very early-stage recreation of the battle system in Capcom's <a
+          href="https://en.wikipedia.org/wiki/Mega_Man_Battle_Network" target="_blank" rel="noopener noreferrer">Mega
+          Man Battle Network</a> series. Done fully in JavaScript using WebGL/Canvas. Online play planned for the
+          distant future.</p>
+        <p><a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">Check it out
+          here!</a> (Touch devices not yet supported)</p>
         <p>Release date: TBD (probably after Universal Basic Income is instated)</p>
 
         {/*

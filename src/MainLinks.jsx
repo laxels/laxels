@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { randInt, withTouchHover } from './Utils';
+import React, {PureComponent} from 'react';
+import {randInt, withTouchHover} from './Utils';
 import './MainLinks.css';
 
 class MainLinks extends PureComponent {
@@ -35,7 +35,7 @@ class MainLinks extends PureComponent {
         {this[`${page}Animation`]()}
       </div>
     );
-  }
+  };
 
   move = () => {
     if (this.state.moving || this.state.stopMoving) return;
@@ -46,27 +46,27 @@ class MainLinks extends PureComponent {
         });
       }, 1500);
     });
-  }
+  };
   startMovement = () => {
     this.setState({stopMoving: false}, this.move);
-  }
+  };
   stopMovement = () => {
     this.setState({stopMoving: true});
-  }
+  };
   mouseEnter = () => {
     if (!this._disableMouseEnter) this.startMovement();
     else delete this._disableMouseEnter;
-  }
+  };
   mouseLeave = () => {
     this.stopMovement();
-  }
+  };
   touchStart = () => {
     this.startMovement();
-  }
+  };
   touchEnd = () => {
     this.stopMovement();
     this._disableMouseEnter = true;
-  }
+  };
   projectsAnimation = () => {
     const bgWrap = this.bgRef.current;
     if (!bgWrap) return <div className="bg-wrap" ref={this.bgRef}/>;
@@ -75,7 +75,7 @@ class MainLinks extends PureComponent {
     const {height} = bgWrap.getBoundingClientRect();
     const generateSq = i => {
       return <div key={i} className={`shifting-sq ${moving ? 'moving' : ''}`}/>;
-    }
+    };
 
     return (
       <div
@@ -86,10 +86,10 @@ class MainLinks extends PureComponent {
         onTouchStart={this.touchStart}
         onTouchEnd={this.touchEnd}
       >
-        <div className="left-bg" style={{width: height/2}}>
+        <div className="left-bg" style={{width: height / 2}}>
           {[...Array(12).keys()].map(generateSq)}
         </div>
-        <div className="right-bg" style={{width: height/2}}>
+        <div className="right-bg" style={{width: height / 2}}>
           {[...Array(12).keys()].map(generateSq)}
         </div>
       </div>
@@ -98,14 +98,17 @@ class MainLinks extends PureComponent {
 
   aboutAnimation = () => {
     const maxMargin = Math.round(window.innerWidth / 5);
-    const randomMargins = () => ({marginLeft: `${randInt(maxMargin+1)}px`, marginRight: `${randInt(maxMargin+1)}px`});
+    const randomMargins = () => ({
+      marginLeft: `${randInt(maxMargin + 1)}px`,
+      marginRight: `${randInt(maxMargin + 1)}px`
+    });
     const generateBar = (i) => <div key={i} className="bar" style={randomMargins()}/>;
     return (
       <div className="bars">
         {[...Array(5).keys()].map(generateBar)}
       </div>
     );
-  }
+  };
 
   handleMouseMove = e => {
     const {lastMouseMove, dots} = this.state;
@@ -117,8 +120,7 @@ class MainLinks extends PureComponent {
     if (e.targetTouches) {
       x = e.targetTouches[0].clientX - gridPos.x;
       y = e.targetTouches[0].clientY - gridPos.y;
-    }
-    else {
+    } else {
       x = e.clientX - gridPos.x;
       y = e.clientY - gridPos.y;
     }
@@ -152,9 +154,9 @@ class MainLinks extends PureComponent {
     }, 1000);
 
     dots.forEach((d, i) => {
-      const dx = Math.round(gridPos.width * d.leftPercent/100);
-      const dy = Math.round(gridPos.height * d.topPercent/100);
-      const dist = Math.sqrt(Math.pow(dx-x,2) + Math.pow(dy-y,2));
+      const dx = Math.round(gridPos.width * d.leftPercent / 100);
+      const dy = Math.round(gridPos.height * d.topPercent / 100);
+      const dist = Math.sqrt(Math.pow(dx - x, 2) + Math.pow(dy - y, 2));
       if (dist <= 100) {
         const timeToFlash = dist * 10;
         setTimeout(() => {
@@ -176,7 +178,7 @@ class MainLinks extends PureComponent {
         }, timeToFlash);
       }
     });
-  }
+  };
   generateDot = ({leftPercent, topPercent, found}, i) => (
     <div
       key={i}
@@ -190,7 +192,7 @@ class MainLinks extends PureComponent {
       className={`radar-pulse ${fading ? 'fading' : ''}`}
       style={{left: `${x}px`, top: `${y}px`}}
     />
-  )
+  );
   contactAnimation = () => {
     const {radarPulses, dots} = this.state;
     return (
@@ -204,7 +206,7 @@ class MainLinks extends PureComponent {
         {dots.map(this.generateDot)}
       </div>
     );
-  }
+  };
 
   render() {
     const {pages, activePage, lastActivePage, transitionDelayFn} = this.props;
