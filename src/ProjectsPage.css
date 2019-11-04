@@ -1,7 +1,6 @@
 .projects-page h2 {
-  color: #F49F5A;
+  color: #f49f5a;
 }
-
 
 .projects-page .websites {
   margin-top: -20px;
@@ -20,29 +19,34 @@
 .projects-page .websites .website.britepeak {
   background-image: url(img/britepeak.png);
 }
+
 .projects-page .websites .website.crowdmed {
   background-image: url(img/crowdmed.png);
 }
+
 .projects-page .websites .website.price {
   background-image: url(img/price.png);
 }
+
 .projects-page .websites .website.gawpoe {
   background-image: url(img/gawpoe.png);
 }
+
 .projects-page .websites .website.amydis {
   background-image: url(img/amydis.png);
 }
+
 .projects-page .websites .website.buypower {
   background-image: url(img/buypower.png);
 }
 
 .projects-page .websites .website span {
+  line-height: 40px;
   position: absolute;
-  left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,.5);
-  line-height: 40px;
-  color: white;
+  left: 0;
   padding: 0 15px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
 }

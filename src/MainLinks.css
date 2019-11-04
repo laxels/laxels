@@ -1,24 +1,27 @@
 .main-links {
+  font-family: 'Aldrich';
+  font-size: 200%;
+  font-weight: bold;
   position: absolute;
   top: 170px;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  font-size: 200%;
-  font-family: 'Aldrich';
-  font-weight: bold;
-  text-transform: uppercase;
-  transition: transform .6s;
   user-select: none;
+  transition: transform 0.6s;
+  text-transform: uppercase;
   -webkit-tap-highlight-color: transparent;
 }
+
 .main-links.page-active {
   transform: translate3d(0, -170px, 0);
 }
+
 @media (max-width: 540px) {
   .main-links {
     top: 120px;
   }
+
   .main-links.page-active {
     transform: translate3d(0, -120px, 0);
   }
@@ -30,65 +33,75 @@
   height: 33.33%;
   color: white;
 }
+
 .main-links .main-link:not(.active) {
   cursor: pointer;
 }
-.main-links .main-link:before {
-  content: '';
+
+.main-links .main-link::before {
   height: 100%;
+  content: '';
 }
-.main-links .main-link:before,
+
+.main-links .main-link::before,
 .main-links .main-link span {
-  display: inline-block;
-  vertical-align: middle;
   position: relative;
   z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .main-link-animation {
-  transition: transform .6s ease-out, height .6s, font-size .6s, margin-left .6s, top .6s;
-  transform: translate3d(0, 0, 0);
   top: 0;
+  transition: transform 0.6s ease-out, height 0.6s, font-size 0.6s, margin-left 0.6s, top 0.6s;
+  transform: translate3d(0, 0, 0);
 }
+
 .main-link-animation.switching {
-  transition-duration: 0s, 0s, 0s, 0s, .6s;
+  transition-duration: 0s, 0s, 0s, 0s, 0.6s;
 }
+
 .main-link-animation.active {
   font-size: 200%;
   height: 170px;
 }
+
 @media (min-width: 901px) {
   .main-link-animation.active {
     margin-left: 65px;
   }
 }
+
 @media (max-width: 540px) {
   .main-link-animation.active {
     font-size: 135%;
     height: 120px;
   }
 }
+
 @media (max-width: 330px) {
   .main-link-animation.active {
     font-size: 125%;
   }
 }
+
 .main-link-animation.inactive {
   top: -170px;
   transform: translate3d(-100%, 0, 0);
 }
+
 .main-link-animation.inactive:not(.page-header) {
   height: 0;
 }
+
 @media (max-width: 540px) {
   .main-link-animation.inactive {
     top: -120px;
   }
 }
 
-
 .main-links .main-link.projects-link {
-  background: #F49F5A;
+  background: #f49f5a;
 }
 
 .main-links .main-link .bg-wrap {
@@ -107,25 +120,29 @@
   top: 0;
   bottom: 0;
 }
+
 .main-links .main-link .left-bg {
   left: 0;
 }
+
 .main-links .main-link .right-bg {
   right: 0;
 }
+
 .main-links .main-link .moving .left-bg,
 .main-links .main-link .moving .right-bg {
   background: white;
 }
 
 .main-links .main-link .shifting-sq {
-  background: #F49F5A;
   position: absolute;
   width: 50%;
   height: 25%;
+  background: #f49f5a;
 }
+
 .main-links .main-link .shifting-sq.moving {
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .main-links .main-link .left-bg .shifting-sq:nth-child(1),
@@ -134,48 +151,56 @@
   top: 0;
   right: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(2),
 .main-links .main-link .right-bg .shifting-sq:nth-child(7),
 .main-links .main-link .left-bg .shifting-sq:nth-child(9) {
   top: 25%;
   right: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(3),
 .main-links .main-link .right-bg .shifting-sq:nth-child(6),
 .main-links .main-link .right-bg .shifting-sq:nth-child(10) {
   top: 50%;
   right: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(4),
 .main-links .main-link .right-bg .shifting-sq:nth-child(5),
 .main-links .main-link .left-bg .shifting-sq:nth-child(10) {
   top: 75%;
   right: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(5),
 .main-links .main-link .right-bg .shifting-sq:nth-child(4),
 .main-links .main-link .right-bg .shifting-sq:nth-child(11) {
   top: 75%;
   left: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(6),
 .main-links .main-link .right-bg .shifting-sq:nth-child(3),
 .main-links .main-link .left-bg .shifting-sq:nth-child(11) {
   top: 50%;
   left: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(7),
 .main-links .main-link .right-bg .shifting-sq:nth-child(2),
 .main-links .main-link .right-bg .shifting-sq:nth-child(12) {
   top: 25%;
   left: 0;
 }
+
 .main-links .main-link .left-bg .shifting-sq:nth-child(8),
 .main-links .main-link .right-bg .shifting-sq:nth-child(1),
 .main-links .main-link .left-bg .shifting-sq:nth-child(12) {
   top: 0;
   left: 0;
 }
+
 .main-links .main-link .shifting-sq:nth-child(9),
 .main-links .main-link .shifting-sq:nth-child(10),
 .main-links .main-link .shifting-sq:nth-child(11),
@@ -189,30 +214,37 @@
 .main-links .main-link .shifting-sq.moving:nth-child(7) {
   transform: scale(0);
 }
+
 .main-links .main-link .shifting-sq.moving:nth-child(2) {
   top: 50%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .left-bg .shifting-sq.moving:nth-child(4) {
   right: 50%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .right-bg .shifting-sq.moving:nth-child(4) {
   left: 50%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .shifting-sq.moving:nth-child(6) {
   top: 25%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .left-bg .shifting-sq.moving:nth-child(8) {
   left: 50%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .right-bg .shifting-sq.moving:nth-child(8) {
   right: 50%;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .main-links .main-link .shifting-sq.moving:nth-child(9),
 .main-links .main-link .shifting-sq.moving:nth-child(10),
 .main-links .main-link .shifting-sq.moving:nth-child(11),
@@ -221,14 +253,16 @@
   transition-delay: 1s;
 }
 
-
+/* This timing is a best effort to match with Dr. Dre's "The Recipe" */
 @keyframes pulse {
   0% {
     transform: scale(1);
   }
+
   6.25% {
     transform: scale(1.1);
   }
+
   12.5% {
     transform: scale(1);
   }
@@ -236,9 +270,11 @@
   25% {
     transform: scale(1);
   }
+
   31.25% {
     transform: scale(1.1);
   }
+
   37.5% {
     transform: scale(1);
   }
@@ -246,6 +282,7 @@
   50% {
     transform: scale(1);
   }
+
   56.25% {
     transform: scale(1.05);
   }
@@ -253,9 +290,11 @@
   62.5% {
     transform: scale(1);
   }
+
   68.75% {
     transform: scale(1.1);
   }
+
   75% {
     transform: scale(1);
   }
@@ -263,13 +302,16 @@
   87.5% {
     transform: scale(1);
   }
+
   93.75% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 .main-links .main-link.about-link:hover:not(.unhover) span {
   animation: pulse 1.8s infinite;
 }
@@ -281,26 +323,27 @@
   left: 0;
   right: 0;
 }
+
 .main-links .main-link:not(:hover) .bars,
 .main-links .main-link.unhover .bars {
-  background: #8B78E2;
-  transition: background 0s .4s;
+  transition: background 0s 0.4s;
+  background: #8b78e2;
 }
 
 .main-links .main-link .bars .bar {
   height: 20%;
-  background: #8B78E2;
-  transition: margin-left .4s, margin-right .4s;
+  transition: margin-left 0.4s, margin-right 0.4s;
+  background: #8b78e2;
 }
+
 .main-links .main-link:not(:hover) .bars .bar,
 .main-links .main-link.unhover .bars .bar {
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
 
-
 .main-links .main-link.contact-link {
-  background: #4AD6B3;
+  background: #4ad6b3;
 }
 
 .main-links .main-link .radar-grid {
@@ -315,9 +358,10 @@
 
 @keyframes flash {
   50% {
-    opacity: .7;
+    opacity: 0.7;
   }
 }
+
 .main-links .main-link .radar-grid .dot {
   position: absolute;
   height: 8px;
@@ -328,19 +372,21 @@
   background: white;
   opacity: 0;
 }
+
 .main-links .main-link .radar-grid .dot.found {
   animation: flash 1s;
 }
 
 .main-links .main-link .radar-grid .radar-pulse {
   position: absolute;
-  border: 2px solid white;
-  border-radius: 50%;
-  opacity: .7;
   width: 4px;
   height: 4px;
   transition: all 1s linear;
+  opacity: 0.7;
+  border: 2px solid white;
+  border-radius: 50%;
 }
+
 .main-links .main-link .radar-grid .radar-pulse.fading {
   opacity: 0;
   width: 200px;

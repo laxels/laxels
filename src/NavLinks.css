@@ -1,15 +1,16 @@
 .nav-links {
+  font-family: 'Aldrich';
   position: fixed;
-  left: 0;
+  z-index: 1;
   top: 0;
   bottom: 0;
-  font-family: 'Aldrich';
-  text-transform: uppercase;
-  z-index: 1;
-  transition: transform .6s, visibility 0s;
+  left: 0;
   user-select: none;
+  transition: transform 0.6s, visibility 0s;
+  text-transform: uppercase;
   -webkit-tap-highlight-color: transparent;
 }
+
 @media (max-width: 900px) {
   .nav-links {
     top: auto;
@@ -18,15 +19,18 @@
     right: 0;
   }
 }
+
 @media (max-width: 400px) {
   .nav-links {
     font-size: 80%;
   }
 }
+
 .nav-links.hidden {
   transform: translate3d(-100%, 0, 0);
   visibility: hidden;
 }
+
 @media (max-width: 900px) {
   .nav-links.hidden {
     transform: translate3d(0, 100%, 0);
@@ -36,34 +40,39 @@
 .nav-links .nav-link {
   position: relative;
   display: block;
-  cursor: pointer;
-  background: white;
-  height: 25%;
   width: 65px;
-  border-top: 1px solid #E5E5E5;
+  height: 25%;
+  cursor: pointer;
+  border-top: 1px solid #e5e5e5;
+  background: white;
 }
+
 @media (min-width: 901px) {
   .nav-links .nav-link {
     padding-right: 15px;
   }
+
   .nav-links .nav-link:first-child {
     border-top: none;
   }
 }
+
 @media (max-width: 900px) {
   .nav-links .nav-link {
     display: inline-block;
-    vertical-align: top;
-    height: 65px;
     width: 25%;
-    border-right: none;
-    border-left: 1px solid #E5E5E5;
+    height: 65px;
     padding-top: 15px;
+    vertical-align: top;
+    border-right: none;
+    border-left: 1px solid #e5e5e5;
   }
+
   .nav-links .nav-link:first-child {
     border-left: none;
   }
 }
+
 @media (max-width: 400px) {
   .nav-links .nav-link {
     height: 50px;
@@ -71,12 +80,12 @@
   }
 }
 
-.nav-links .nav-link:before,
-.nav-links .nav-link .drape:before {
-  content: '';
+.nav-links .nav-link::before,
+.nav-links .nav-link .drape::before {
   display: inline-block;
-  vertical-align: middle;
   height: 100%;
+  content: '';
+  vertical-align: middle;
 }
 
 .nav-links .nav-link span {
@@ -85,11 +94,13 @@
   overflow-wrap: break-word;
   width: 1em;
 }
+
 @media (min-width: 901px) and (max-height: 600px) {
   .nav-links .nav-link span {
     font-size: 80%;
   }
 }
+
 @media (max-width: 900px) {
   .nav-links .nav-link span {
     overflow-wrap: normal;
@@ -101,21 +112,25 @@
   position: absolute;
   overflow: hidden;
 }
+
 .nav-links .nav-link .drape {
   position: absolute;
   color: white;
 }
+
 @media (min-width: 901px) {
   .nav-links .nav-link .drape-wrap {
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
-    transition: width .6s;
     width: 15px;
+    transition: width 0.6s;
   }
+
   .nav-links .nav-link:hover:not(.unhover) .drape-wrap {
     width: 100%;
   }
+
   .nav-links .nav-link .drape {
     padding-right: 15px;
     width: 65px;
@@ -124,17 +139,20 @@
     bottom: 0;
   }
 }
+
 @media (max-width: 900px) {
   .nav-links .nav-link .drape-wrap {
     top: 0;
-    left: 0;
     right: 0;
-    transition: height .6s;
+    left: 0;
     height: 15px;
+    transition: height 0.6s;
   }
+
   .nav-links .nav-link:hover:not(.unhover) .drape-wrap {
     height: 100%;
   }
+
   .nav-links .nav-link .drape {
     padding-top: 15px;
     height: 65px;
@@ -143,10 +161,12 @@
     right: 0;
   }
 }
+
 @media (max-width: 400px) {
   .nav-links .nav-link .drape-wrap {
     height: 10px;
   }
+
   .nav-links .nav-link .drape {
     padding-top: 10px;
     height: 50px;
@@ -154,26 +174,33 @@
 }
 
 .nav-links .nav-link:nth-child(1) {
-  color: #2D95BF;
+  color: #2d95bf;
 }
+
 .nav-links .nav-link:nth-child(1) .drape {
-  background: #2D95BF;
+  background: #2d95bf;
 }
+
 .nav-links .nav-link:nth-child(2) {
-  color: #F49F5A;
+  color: #f49f5a;
 }
+
 .nav-links .nav-link:nth-child(2) .drape {
-  background: #F49F5A;
+  background: #f49f5a;
 }
+
 .nav-links .nav-link:nth-child(3) {
-  color: #8B78E2;
+  color: #8b78e2;
 }
+
 .nav-links .nav-link:nth-child(3) .drape {
-  background: #8B78E2;
+  background: #8b78e2;
 }
+
 .nav-links .nav-link:nth-child(4) {
-  color: #4AD6B3;
+  color: #4ad6b3;
 }
+
 .nav-links .nav-link:nth-child(4) .drape {
-  background: #4AD6B3;
+  background: #4ad6b3;
 }

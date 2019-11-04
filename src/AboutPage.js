@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import Page from './Page';
 import fbIcon from './img/fb-icon.svg';
 import liIcon from './img/li-icon.svg';
@@ -14,67 +14,70 @@ class AboutPage extends PureComponent {
     return (
       <Page page="about" {...this.props}>
         <p>
-          Hi there! My name is Leonardo Axel Setyanto. I'm a full-stack web developer in San Francisco who loves making
+          Hi there! My name is Leonardo Axel Setyanto.
+          I'm a full-stack web developer in San Francisco who loves making
           apps as fun, pretty, and bug-free as I am. :P
         </p>
         <p>
-          For those of you hiring, <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my
-          résumé</a>. Check out <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank"
-                                   rel="noopener noreferrer">my LinkedIn</a> as well!
+          For those of you hiring,
+          <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my résumé</a>.
+          Check out
+          <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer">my LinkedIn</a>
+          as well!
         </p>
 
         <h2>Career Timeline</h2>
         <p>Hover or tap on the icons for details!</p>
         <div className="timeline">
           <div className="timeline-sec">
-            <div className="sec-fill ut"/>
+            <div className="sec-fill ut" />
           </div>
           <div className="timeline-sec">
-            <div className="sec-fill ut half"/>
-            <div className="sec-fill loku half"/>
+            <div className="sec-fill ut half" />
+            <div className="sec-fill loku half" />
           </div>
           <div className="timeline-sec">
-            <div className="sec-fill ut"/>
+            <div className="sec-fill ut" />
           </div>
           <div className="timeline-sec">
-            <div className="sec-fill crowdmed"/>
+            <div className="sec-fill crowdmed" />
           </div>
           <div className="timeline-sec">
-            <div className="sec-fill pixelkeet"/>
+            <div className="sec-fill pixelkeet" />
           </div>
           <div className="timeline-labels">
             <div className="timeline-label top-label">
-              <img src={utLogo} alt="University of Texas at Austin logo"/>
+              <img src={utLogo} alt="University of Texas at Austin logo" />
               <div className="text">
                 <span>BS Computer Science</span>
                 <span>@ UT Austin (2010-2012)</span>
               </div>
-              <div className="tick ut"/>
+              <div className="tick ut" />
             </div>
             <div className="timeline-label">
-              <img src={lokuLogo} alt="Loku logo"/>
+              <img src={lokuLogo} alt="Loku logo" />
               <div className="text">
                 <span>Software Engineer</span>
                 <span>@ Loku (2011-2012)</span>
               </div>
-              <div className="tick loku"/>
+              <div className="tick loku" />
             </div>
             <div className="timeline-label">
-              <img src={crowdmedLogo} alt="CrowdMed logo"/>
+              <img src={crowdmedLogo} alt="CrowdMed logo" />
               <div className="text">
                 <span>Technical Co-Founder</span>
                 <span>& Lead Developer</span>
                 <span>@ CrowdMed (2012-2016)</span>
               </div>
-              <div className="tick crowdmed"/>
+              <div className="tick crowdmed" />
             </div>
             <div className="timeline-label">
-              <img src={pixelkeetLogo} alt="Pixelkeet logo"/>
+              <img src={pixelkeetLogo} alt="Pixelkeet logo" />
               <div className="text">
                 <span>Freelance Developer</span>
                 <span>@ Pixelkeet (2016+)</span>
               </div>
-              <div className="tick pixelkeet"/>
+              <div className="tick pixelkeet" />
             </div>
           </div>
         </div>
@@ -86,8 +89,10 @@ class AboutPage extends PureComponent {
         <p>Services: AWS (S3, EC2, CloudFront), Heroku, Stripe, PayPal, Facebook, SendGrid, Twilio, GitHub</p>
         <p>Servers: Apache, Nginx</p>
         <p>Languages: JavaScript, CoffeeScript, Python (familiar with Java, Haskell, PHP, C++, C, Lisp)</p>
-        <p>Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch, Tesseract OCR Engine, Stanford CoreNLP,
-          OpenGL, FLTK, Photoshop</p>
+        <p>
+          Misc: Redis, jQuery, WordPress, WebGL, WebSocket, ElasticSearch,
+          Tesseract OCR Engine, Stanford CoreNLP, OpenGL, FLTK, Photoshop
+        </p>
 
         <h2>Education</h2>
         <p>Computer Science (Turing Scholar) @ University of Texas at Austin (2010-2012)</p>
@@ -95,27 +100,35 @@ class AboutPage extends PureComponent {
         <h2>Other Stuff</h2>
         <p>
           My hobbies include:
-          <br/>
+          <br />
           - Attending concerts/festivals
-          <br/>
+          <br />
           - Karaoke/clubbing with friends
-          <br/>
+          <br />
           - Video games/TV
-          <br/>
+          <br />
           - Stuffing myself
-          <br/>
+          <br />
           - Long walks with music
         </p>
 
         <h2>Social Media</h2>
         <p>
-          <a href="https://www.facebook.com/laxels" target="_blank" rel="noopener noreferrer"
-             className="social-media facebook">
-            <img src={fbIcon} alt="Facebook"/>
+          <a
+            href="https://www.facebook.com/laxels"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-media facebook"
+          >
+            <img src={fbIcon} alt="Facebook" />
           </a>
-          <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer"
-             className="social-media linkedin">
-            <img src={liIcon} alt="LinkedIn"/>
+          <a
+            href="https://www.linkedin.com/in/axelsetyanto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-media linkedin"
+          >
+            <img src={liIcon} alt="LinkedIn" />
           </a>
         </p>
       </Page>

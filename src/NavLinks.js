@@ -1,10 +1,12 @@
-import React, {PureComponent} from 'react';
-import {withTouchHover} from './Utils';
+import React, { PureComponent } from 'react';
+import { withTouchHover } from './Utils';
 import './NavLinks.css';
 
+// This class contains the logic for the animation of
+// the nav bar which pops up when not on the home page
 class NavLinks extends PureComponent {
   generateNavLink = (page) => {
-    const {handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
+    const { handleClick, handleTouchStart, handleTouchEnd, unhovered } = this.props;
     return (
       <div
         key={page}
@@ -24,7 +26,7 @@ class NavLinks extends PureComponent {
   };
 
   render() {
-    const {pages, activePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered} = this.props;
+    const { pages, activePage, transitionDelayFn, handleClick, handleTouchStart, handleTouchEnd, unhovered } = this.props;
     return (
       <nav
         className={`nav-links ${activePage ? '' : 'hidden'}`}

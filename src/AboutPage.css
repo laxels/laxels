@@ -1,5 +1,5 @@
 .about-page h2 {
-  color: #8B78E2;
+  color: #8b78e2;
 }
 
 .about-page .social-media {
@@ -16,9 +16,8 @@
 }
 
 .about-page .social-media.linkedin img {
-  transform: translateY(-.5px) scale(1.11);
+  transform: translateY(-0.5px) scale(1.11);
 }
-
 
 .about-page .timeline {
   position: relative;
@@ -26,6 +25,7 @@
   margin-bottom: 40px;
   height: 174px;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline {
     height: 400px;
@@ -34,6 +34,7 @@
     width: 354px;
   }
 }
+
 @media (max-width: 400px) {
   .about-page .timeline {
     padding: 0 130px;
@@ -46,38 +47,49 @@
   vertical-align: top;
   height: 100%;
 }
+
 .about-page .timeline .timeline-sec:nth-child(1) {
   width: 6.25%;
 }
+
 .about-page .timeline .timeline-sec:nth-child(2) {
   width: 18.75%;
 }
+
 .about-page .timeline .timeline-sec:nth-child(3) {
   width: 6.25%;
 }
+
 .about-page .timeline .timeline-sec:nth-child(4) {
   width: 50%;
 }
+
 .about-page .timeline .timeline-sec:nth-child(5) {
   width: 18.75%;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-sec {
     display: block;
     width: 100% !important;
   }
+
   .about-page .timeline .timeline-sec:nth-child(1) {
     height: 6.25%;
   }
+
   .about-page .timeline .timeline-sec:nth-child(2) {
     height: 18.75%;
   }
+
   .about-page .timeline .timeline-sec:nth-child(3) {
     height: 6.25%;
   }
+
   .about-page .timeline .timeline-sec:nth-child(4) {
     height: 50%;
   }
+
   .about-page .timeline .timeline-sec:nth-child(5) {
     height: 18.75%;
   }
@@ -86,9 +98,11 @@
 .about-page .timeline .timeline-sec .sec-fill {
   height: 100%;
 }
+
 .about-page .timeline .timeline-sec .sec-fill.half {
   height: 50%;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-sec .sec-fill.half {
     display: inline-block;
@@ -99,34 +113,41 @@
 
 .about-page .timeline .timeline-label {
   position: absolute;
-  height: 65px;
-  padding: 5px 0 0 0;
   bottom: 0;
+  height: 65px;
   margin-left: -30px;
-  transition: all .5s .25s;
+  padding: 5px 0 0 0;
+  transition: all 0.5s 0.25s;
   white-space: nowrap;
 }
+
 .about-page .timeline .timeline-label.top-label {
   padding: 0 0 5px 0;
   top: 0;
   bottom: auto;
 }
+
 .about-page .timeline .timeline-label:hover {
   margin-left: -100px;
   transition-delay: 0s;
 }
+
 .about-page .timeline .timeline-label:nth-child(1) {
   left: 15.625%;
 }
+
 .about-page .timeline .timeline-label:nth-child(2) {
   left: 15.625%;
 }
+
 .about-page .timeline .timeline-label:nth-child(3) {
   left: 56.25%;
 }
+
 .about-page .timeline .timeline-label:nth-child(4) {
   left: 90.625%;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-label {
     right: 0;
@@ -137,28 +158,35 @@
     width: 160px;
     height: auto;
   }
+
   .about-page .timeline .timeline-label:hover {
     margin: -51px 0 0 0;
   }
+
   .about-page .timeline .timeline-label.top-label {
     left: 0 !important;
     right: auto;
     padding: 0 5px 0 0;
     text-align: right;
   }
+
   .about-page .timeline .timeline-label:nth-child(1) {
     top: 15.625%;
   }
+
   .about-page .timeline .timeline-label:nth-child(2) {
     top: 15.625%;
   }
+
   .about-page .timeline .timeline-label:nth-child(3) {
     top: 56.25%;
   }
+
   .about-page .timeline .timeline-label:nth-child(4) {
     top: 90.625%;
   }
 }
+
 @media (max-width: 400px) {
   .about-page .timeline .timeline-label {
     width: 120px;
@@ -173,10 +201,12 @@
   top: -15px;
   height: 15px;
 }
+
 .about-page .timeline .timeline-label.top-label .tick {
   top: auto;
   bottom: -15px;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-label .tick {
     top: 50% !important;
@@ -186,6 +216,7 @@
     height: 4px;
     width: 10px;
   }
+
   .about-page .timeline .timeline-label.top-label .tick {
     left: auto;
     right: -10px;
@@ -201,6 +232,7 @@
 .about-page .timeline .timeline-label img {
   height: 60px;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-label img {
     height: auto;
@@ -209,33 +241,37 @@
 }
 
 .about-page .timeline .timeline-label .text {
-  width: 0;
-  opacity: 0;
-  visibility: hidden;
   font-size: 80%;
-  transition: margin-left .5s .25s, width .5s .25s, visibility .5s .25s, opacity .5s;
+  visibility: hidden;
+  width: 0;
+  transition: margin-left 0.5s 0.25s, width 0.5s 0.25s, visibility 0.5s 0.25s, opacity 0.5s;
+  opacity: 0;
 }
+
 .about-page .timeline .timeline-label:hover .text {
-  width: 130px;
-  opacity: 1;
   visibility: visible;
+  width: 130px;
   margin-left: 10px;
-  transition: margin-left .5s, width .5s, visibility .5s, opacity .5s .25s;
+  transition: margin-left 0.5s, width 0.5s, visibility 0.5s, opacity 0.5s 0.25s;
+  opacity: 1;
 }
+
 @media (max-width: 740px) {
   .about-page .timeline .timeline-label .text {
-    width: auto !important;
-    margin: 0;
     display: block;
+    width: auto !important;
     height: 0;
-    transition: margin-top .5s .25s, height .5s .25s, visibility .5s .25s, opacity .5s;
+    margin: 0;
+    transition: margin-top 0.5s 0.25s, height 0.5s 0.25s, visibility 0.5s 0.25s, opacity 0.5s;
   }
+
   .about-page .timeline .timeline-label:hover .text {
-    margin: 6px 0 0 0;
     height: 36px;
-    transition: margin-top .5s, height .5s, visibility .5s, opacity .5s .25s;
+    margin: 6px 0 0 0;
+    transition: margin-top 0.5s, height 0.5s, visibility 0.5s, opacity 0.5s 0.25s;
   }
 }
+
 @media (max-width: 400px) {
   .about-page .timeline .timeline-label .text {
     font-size: 70%;
@@ -247,14 +283,17 @@
 }
 
 .about-page .timeline .ut {
-  background: #DE6F2C;
+  background: #de6f2c;
 }
+
 .about-page .timeline .loku {
-  background: #F5D041;
+  background: #f5d041;
 }
+
 .about-page .timeline .crowdmed {
-  background: #AA2228;
+  background: #aa2228;
 }
+
 .about-page .timeline .pixelkeet {
-  background: #A5CD46;
+  background: #a5cd46;
 }

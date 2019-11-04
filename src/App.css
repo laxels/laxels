@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
 }
 
@@ -7,13 +9,14 @@ html, body, #root {
 }
 
 body {
-  margin: 0;
-  padding: 0;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  margin: 0;
+  padding: 0;
   text-align: center;
-  color: rgb(119,119,119);
+  color: rgb(119, 119, 119);
 }
+
 @media (max-width: 400px) {
   body {
     font-size: 14px;
@@ -27,47 +30,53 @@ body {
   padding-bottom: 20px;
   overflow: hidden;
 }
+
 .page-container.vault-transition {
-  transform: scale(.66667);
-  transition: transform .75s linear .4s;
+  transition: transform 0.75s linear 0.4s;
+  transform: scale(0.66667);
 }
+
 @media (min-width: 901px) {
   .page-container {
     padding-left: 65px;
   }
 }
+
 @media (max-width: 900px) {
   .page-container {
     padding-bottom: 85px;
   }
 }
+
 @media (max-width: 540px) {
   .page-container {
     padding-top: 120px;
   }
 }
+
 @media (max-width: 400px) {
   .page-container {
     padding-bottom: 65px;
   }
 }
 
-
 a {
-  color: #2D95BF;
   cursor: pointer;
   text-decoration: none;
+  color: #2d95bf;
 }
+
 a:hover {
-  color: #4AD6B3;
+  color: #4ad6b3;
 }
 
 h2 {
   font-family: 'Aldrich';
-  margin: 1.25em 0 .5em;
   font-size: 200%;
   font-weight: 400;
+  margin: 1.25em 0 0.5em;
 }
+
 @media (max-width: 540px) {
   h2 {
     font-size: 170%;
@@ -77,20 +86,21 @@ h2 {
 p {
   line-height: 1.5;
 }
+
 .page-content > p:first-child {
   margin-top: 2em;
 }
 
-
 .page-header {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 170px;
-  background: #2D95BF;
   z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 170px;
+  background: #2d95bf;
 }
+
 @media (max-width: 540px) {
   .page-header {
     height: 120px;
@@ -108,6 +118,7 @@ p {
   margin: auto;
   cursor: pointer;
 }
+
 @media (max-width: 540px) {
   .page-header .profile {
     height: 110px;
@@ -121,15 +132,15 @@ p {
   width: 100%;
 }
 
-
 .page {
   position: relative;
-  opacity: 0;
+  overflow: hidden;
   max-height: 0;
   padding: 0 20px;
-  transition: opacity .6s, max-height 0s;
-  overflow: hidden;
+  transition: opacity 0.6s, max-height 0s;
+  opacity: 0;
 }
+
 .page.active {
   opacity: 1;
   max-height: 9999px;
