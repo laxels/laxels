@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 const pages = [
   'projects',
   'about',
-  'contact'
+  'contact',
 ];
 
 ReactDOM.render((
