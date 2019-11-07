@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import Page from './Page';
-import fbIcon from './img/fb-icon.svg';
-import liIcon from './img/li-icon.svg';
 import utLogo from './img/ut-logo.png';
 import lokuLogo from './img/loku-logo.webp';
 import crowdmedLogo from './img/crowdmed-logo.png';
 import pixelkeetLogo from './img/pixelkeet-logo.jpg';
+import commonLogo from './img/common-logo.png';
 import './AboutPage.css';
 
 
@@ -45,6 +44,9 @@ class AboutPage extends PureComponent {
           <div className="timeline-sec">
             <div className="sec-fill pixelkeet" />
           </div>
+          <div className="timeline-sec">
+            <div className="sec-fill common" />
+          </div>
           <div className="timeline-labels">
             <div className="timeline-label top-label">
               <img src={utLogo} alt="University of Texas at Austin logo" />
@@ -71,13 +73,21 @@ class AboutPage extends PureComponent {
               </div>
               <div className="tick crowdmed" />
             </div>
-            <div className="timeline-label">
+            <div className="timeline-label top-label">
               <img src={pixelkeetLogo} alt="Pixelkeet logo" />
               <div className="text">
                 <span>Freelance Developer</span>
-                <span>@ Pixelkeet (2016+)</span>
+                <span>@ Pixelkeet (2016-2018)</span>
               </div>
               <div className="tick pixelkeet" />
+            </div>
+            <div className="timeline-label">
+              <img src={commonLogo} alt="Common Networks logo" />
+              <div className="text">
+                <span>Staff Software Engineer</span>
+                <span>@ Common Networks (2018+)</span>
+              </div>
+              <div className="tick common" />
             </div>
           </div>
         </div>
@@ -110,26 +120,6 @@ class AboutPage extends PureComponent {
           - Stuffing myself
           <br />
           - Long walks with music
-        </p>
-
-        <h2>Social Media</h2>
-        <p>
-          <a
-            href="https://www.facebook.com/laxels"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-media facebook"
-          >
-            <img src={fbIcon} alt="Facebook" />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/axelsetyanto"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-media linkedin"
-          >
-            <img src={liIcon} alt="LinkedIn" />
-          </a>
         </p>
       </Page>
     );
