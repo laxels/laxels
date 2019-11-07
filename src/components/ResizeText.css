@@ -1,0 +1,12 @@
+.resize-text::before,
+.resize-text span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.resize-text::before {
+  height: 100%;
+  content: '';
+}
