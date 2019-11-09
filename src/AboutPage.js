@@ -18,11 +18,11 @@ class AboutPage extends PureComponent {
           apps as fun, pretty, and bug-free as I am. :P
         </p>
         <p>
-          For those of you hiring,
+          For those of you hiring,{' '}
           <a href="/resume.pdf" download="resume-leonardo-axel-setyanto.pdf">here's my résumé</a>.
-          Check out
+          Check out{' '}
           <a href="https://www.linkedin.com/in/axelsetyanto" target="_blank" rel="noopener noreferrer">my LinkedIn</a>
-          as well!
+          {' '}as well!
         </p>
 
         <h2>Career Timeline</h2>

@@ -50,7 +50,7 @@ class ProjectsPage extends PureComponent {
         </p>
 
         <h2>Battle Network Arena</h2>
-        <p>A very early-stage recreation of the battle system in Capcom's
+        <p>A very early-stage recreation of the battle system in Capcom's{' '}
           <a
             href="https://en.wikipedia.org/wiki/Mega_Man_Battle_Network"
             target="_blank"
@@ -58,14 +58,14 @@ class ProjectsPage extends PureComponent {
           >
             Mega Man Battle Network
           </a>
-          series. Done fully in JavaScript using WebGL/Canvas.
+          {' '}series. Done fully in JavaScript using WebGL/Canvas.
           Online play planned for the distant future.
         </p>
         <p>
           <a href="https://bn-arena.herokuapp.com" target="_blank" rel="noopener noreferrer">
             Check it out here!
           </a>
-          (Touch devices not yet supported)
+          {' '}(Touch devices not yet supported)
         </p>
         <p>Release date: TBD (probably after Universal Basic Income is instated)</p>
       </Page>
