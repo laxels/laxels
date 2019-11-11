@@ -9,7 +9,7 @@ class ResizeDiv extends PureComponent {
   static getFontSize() {
     const { clientWidth: width, clientHeight: bodyHeight } = document.body;
     const height = (bodyHeight - 170) / 3;
-    const widthRestricted = Math.round((width - height) / 5.6);
+    const widthRestricted = Math.round((width - height) / 6);
     const heightRestricted = Math.round(height / 4);
     return Math.min(widthRestricted, heightRestricted);
   }
