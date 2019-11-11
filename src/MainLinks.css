@@ -28,8 +28,10 @@
 }
 
 .main-links .main-link {
-  display: block;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 33.33%;
   color: white;
 }
@@ -38,17 +40,10 @@
   cursor: pointer;
 }
 
-.main-links .main-link::before {
-  height: 100%;
-  content: '';
-}
-
-.main-links .main-link::before,
-.main-links .main-link span {
+.main-links .main-link .main-link-text {
   position: relative;
   z-index: 1;
-  display: inline-block;
-  vertical-align: middle;
+  padding-top: 0.125em;
 }
 
 .main-link-animation {
@@ -62,7 +57,7 @@
 }
 
 .main-link-animation.active {
-  font-size: 200%;
+  font-size: 200% !important;
   height: 170px;
 }
 
@@ -74,14 +69,14 @@
 
 @media (max-width: 540px) {
   .main-link-animation.active {
-    font-size: 135%;
+    font-size: 135% !important;
     height: 120px;
   }
 }
 
 @media (max-width: 330px) {
   .main-link-animation.active {
-    font-size: 125%;
+    font-size: 125% !important;
   }
 }
 
@@ -312,7 +307,7 @@
   }
 }
 
-.main-links .main-link.about-link:hover:not(.unhover) span {
+.main-links .main-link.about-link:hover:not(.unhover) .main-link-text {
   animation: pulse 1.8s infinite;
 }
 

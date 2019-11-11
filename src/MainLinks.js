@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { randInt, withTouchHover } from './Utils';
+import ResizeDiv from './components/ResizeDiv';
 import './MainLinks.css';
-// import ResizeText from './components/ResizeText';
 
 // This class contains the logic for every animated link on the home page.
 // Each animated link is also a page header. It retains its animations in either mode.
@@ -41,7 +41,7 @@ class MainLinks extends PureComponent {
     const inactive = !active && activePage;
     const switching = activePage && lastActivePage;
     return (
-      <div
+      <ResizeDiv
         key={page}
         className={`main-link main-link-animation ${page}-link ${active ? 'active' : ''} ${inactive ? 'inactive' : ''} ${switching ? 'switching' : ''} ${unhovered === `main-${page}` ? 'unhover' : ''}`}
         onClick={handleClick(page)}
@@ -49,10 +49,9 @@ class MainLinks extends PureComponent {
         onTouchEnd={handleTouchEnd(`main-${page}`)}
         style={transitionDelayFn(page)}
       >
-        {/* <ResizeText>{page}</ResizeText> */}
-        <span>{page}</span>
+        <span className="main-link-text">{page}</span>
         {this[`${page}Animation`]()}
-      </div>
+      </ResizeDiv>
     );
   };
 
